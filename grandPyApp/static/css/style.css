@@ -1,0 +1,118 @@
+@font-face 
+{
+    font-family: 'chantelli_antiquaregular';
+    src: url('../fonts/Chantelli_Antiqua-webfont.eot');
+    src: url('../fonts/Chantelli_Antiqua-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Chantelli_Antiqua-webfont.woff2') format('woff2'),
+         url('../fonts/Chantelli_Antiqua-webfont.woff') format('woff'),
+         url('../fonts/Chantelli_Antiqua-webfont.ttf') format('truetype'),
+         url('../fonts/Chantelli_Antiqua-webfont.svg#chantelli_antiquaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* Modifications according to resolution */
+
+@media all and (max-width:  1024px) /* all screen types and width less than or equal to 1024px*/
+{
+   	#bloc_page1  /* Hide border*/
+    {
+        display: none;       
+    }   
+    	
+	section /*Column presentation*/
+    {
+		flex-direction: column;
+		align-items: justify;
+    }
+    #Home
+	{
+	    min-width: none;    
+	}
+	#Empty_zone
+	{
+	    min-width: none;    
+	}
+	#Form
+	{
+	    min-width: none; 
+	}  
+}
+
+/* Block organization*/
+
+body
+{		
+	display: flex;
+	justify-content: center;
+	background-color: #c3d6e7;		
+}	
+
+#bloc_page1
+{
+	height: 660px;
+	min-width: 100px;	
+	margin-top: 90px;
+}
+#logo
+{ 
+	float: center;
+}
+/*	section
+	{	}*/
+		/* display: flex;	 */
+
+#Home
+{
+    
+    min-width: 300px;
+    padding-right: 20px;   
+}
+#Empty_zone
+{
+    
+    min-width: 230px;
+    padding-right: 20px;    
+}
+#Formulaire
+{
+    
+    min-width: 230px;
+    padding-right: 20px;   
+}
+footer
+{
+	text-align: center;
+}
+
+/* Text and image formatting*/
+h1
+{
+	font-family: 'chantelli_antiquaregular';
+	color: rgb(130,70,0);
+	text-align: center;	
+}
+h2
+{
+	font-family: 'chantelli_antiquaregular';
+	color: rgb(200,100,0);	
+}
+#intro
+{
+	text-align: center;
+}
+/* .Photo
+{
+	border: 3px rgb(130,70,0) solid;
+	box-shadow: 3px 3px 3px black;	
+} */
+
+a:hover
+{
+  color:green; 
+}
+
+
+
+
