@@ -3,7 +3,7 @@
 
 .jumbotron row {
 	margin-top: 50px;
-	background: rgba(55, 55, 2, 0.5);
+	color:rgb(4, 124, 0);
 }
 .jumbotron p{
 	margin-left : 50px
@@ -12,13 +12,18 @@
 /* Body */
 body
 {	
-	background-color: #99caf5;
+	background-color : rgb(64, 131, 79);
 }	
 
 /* Text and image formatting*/
+title
+{
+	color:rgb(4, 124, 0);
+}
 h1
 {
 	margin-bottom: 20px;
+	color:rgb(255, 60, 0);
 }
 
 img {

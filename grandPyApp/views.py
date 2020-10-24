@@ -14,8 +14,8 @@ def index():
     return render_template("index.html")
 
 
-# @app.route('/result/')
+# @app.route('/page2/')
 # def result():
-#     return render_template("result.html")
+#     return render_template("page2.html")
 
 
