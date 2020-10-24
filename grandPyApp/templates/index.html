@@ -2,45 +2,109 @@
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
-		<link rel="stylesheet" href="../static/css/style.css" />
+		<!-- Adapts to support screen size -->
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<!-- localize css file -->
+		<link rel="stylesheet" href="../static/css/style.css" /> 
 		<title>GrandPy Bot</title>
+		<!-- Provides description to search engines for the display of shorts results-->
+		<meta name="description" content="Ecoutez l'ancien pour avoir un oeil neuf sur le monde.">
+		<!-- Bootstrap links -->
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 	</head>
-	<body>
-		<div id="bloc_page1"></div><!-- Liseré -->					
-		<div id="bloc_page2"><!-- CV -->
-			<div id="logo"><img class="GrandPiBotte" src="../static/img/GrandPiBotte.png"></a></div>
-			<header>
-				<h1>GrandPy Bot</h1>
-				<p id="intro">"GrandPy Bot : ça me botte !"</p>				
-			</header>			
-			<section>
-				<div id="Home">
-				<h2>Acceuil</h2>
-					<ul>
-						<li><strong>Posez votre question à GrandPy </strong> ... <em>(blabla)</em><br />blabla2</li>							
-					</ul>
+
+	<body id="page-top" data-spy="scroll" data-target=".navbar">
+
+		<!-- Navigation 
+			================================================================================ -->			
+		<header>			
+			<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#page-top">GrandPy Bot</a>
+					</div>
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav">
+							<li class="hidden"><a href="#page-top"></a></li>
+							<li><a href="#dialog">Dialogue</a></li>
+							<li><a href="#form">Posez votre question</a></li>
+							<li><a href="#contact">Contact</a></li>
+						</ul>
+					</div>
 				</div>
-				<div id="Empty_zone">	
-				<h2>Zone vide</h2>
-					<ul>
-						<li>Q1</li>
-						<li>R1-adresse</li>
-						<li>R1-map</li>
-                        <li>R1-texte</li>
-                        <li>Q2</li>
-					</ul>
-				</div>
-				<div id="Form"	>
-				<h2>Formulaire</h2>
-					<p>
-						Ecrivez ici.
+			</div> 	  
+		</header>
+
+		<!-- Page
+		==================================================================================== -->
+		<div class="container">
+
+			<!-- Logo 
+			================================================================================ -->
+			<div class="jumbotron row" id="logo">
+				<h1 class="text-center">GrandPy Bot</h1>				
+				<img class="GrandPiBotte" src="../static/img/GrandPiBotte.png" alt="GrandPiBotte">  
+				<h2 class="text-center">"GrandPy Bot : ça me botte !"</h2>
+				<p class="text-justify col-sm-12 col-md-7">Le GrandPy Bot, peut trouver n'importe quel endroit. Demandez lui de trouver une adresse et il la trouvera ! Il se peut même qu'il ait une petite histoire à raconter à son propos.</p>
+			</div>
+
+			<!-- Dialog 
+				=========================================================================== -->				
+			<div class="jumbotron row" id="dialog">	
+
+				<ul>
+					<li>Q1</li>
+					<li>R1-adresse</li>
+					<li>R1-map</li>
+					<li>R1-texte</li>
+					<li>Q2</li>
+				</ul>
+			</div>	
+
+			<!-- Form 
+			============================================================================ -->
+			<form>
+				<div class="form-group" id="form">
+				<label>Votre question :</label><textarea class="form-control" id="textarea"></textarea><br>
+				<button type="submit" class="btn btn-default pull-right">Envoyer</button>
+			</form>					
+			
+			<!-- Footer
+			================================================== -->
+			<footer class="row text-center"></footer>
+				<div class="jumbotron row" id="contact">					
+					<!-- Contact -->
+					<p>Loïc ROMERO<br>
+					<a href="mailto:loic.romero1@gmail.com">loic.romero1@gmail.com</a><br><br>
+					<!-- Github -->
+					<a class="btn btn-default pull-right" href="https://github.com/ROL-1/P7-GrandPy-Bot"><i class="fa fa-github fa-2x"></i></a>
 					</p>
 				</div>
-			</section>
-			<footer>
-				<h2>Contact</h2>
-				<p><a href="#">loic.romero1@gmail.com</a></p>
 			</footer>
-		</div>	
+			<!-- jQuery -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+			<!-- Javascript de Bootstrap -->
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+			<script>
+				// Scrollspy fluide
+				$(function () {
+					$('header a').on('click', function(e) {
+					e.preventDefault();
+					var hash = this.hash;
+					$('html, body').animate({
+						scrollTop: $(this.hash).offset().top
+					}, 1000, function(){
+						window.location.hash = hash;
+					});
+					});
+				});
+			</script>
+		</div>			
 	</body>
 </html>
