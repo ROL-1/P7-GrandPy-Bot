@@ -31,7 +31,7 @@ URL = "https://fr.wikipedia.org/w/api.php"
 
 PARAMS = {
     "action": "query",
-    "prop":"extracts", # infos
+    "prop":"extracts|coordinates", # infos
     "explaintext":"1", # text or html (boolean y/n)
     "exintro": "1", # intro (boolean y/n)
     "format": "json",
@@ -42,7 +42,7 @@ PARAMS = {
     "generator": "search", # how to search
     "gsrsearch": "pont bordeaux", # terms search
     "exsentences": "3", # nb sentences
-    "gsrlimit":"1"   # nb results
+    "gsrlimit":"1",  # nb results
 }
 
 R = S.get(url=URL, params=PARAMS)
