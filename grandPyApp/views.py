@@ -11,8 +11,7 @@ app = Flask(__name__) # name the WSGI application : "app"
 @app.route('/') # a "view"
 @app.route('/index/') # don't forget "/" at the end
 def index():
-    return render_template("index.html")
-
+    return render_template("index.html") # TC
 
 # @app.route('/page2/')
 # def result():

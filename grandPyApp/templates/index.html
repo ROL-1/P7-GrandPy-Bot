@@ -17,10 +17,10 @@
 		<ul></ul><!-- Empty list waiting for input-->
 	</div>
 	<!-- Map
-		=========================================================================== -->				
-		<div class="jumbotron row" id="map">
-			<div id='map' style='width: 400px; height: 300px;'></div>
-			<script>
+	=========================================================================== -->				
+	<div class="jumbotron row" id="jb_map">
+		<div id='map' style='width: 400px; height: 300px;'></div>
+		<script>
 			mapboxgl.accessToken = 'pk.eyJ1Ijoicm9sLTEiLCJhIjoiY2tncnhvOHZtMGpleTJ4cXdrenN0aGMzYSJ9.DikocYiTLvwfLSvHwD42Hw';
 			var map = new mapboxgl.Map({
 			container: 'map',
@@ -28,8 +28,17 @@
 			center: [-0.50, 44.80], // starting position [lng, lat]
 			zoom: 9 // starting zoom
 			});
-			</script>
-		</div>		
+		</script>
+	</div>		
+	
+
+	<!-- Wikipedia
+	=========================================================================== -->				
+	<div class="jumbotron row" id="jb_wikipedia">
+		<div id='wikipedia'></div>
+
+
+	</div>		
 
 	<!-- Form 
 	============================================================================ -->
