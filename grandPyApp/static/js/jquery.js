@@ -7,9 +7,9 @@ $(function() {
 
   $question.on('submit', function(e) {
     e.preventDefault();
-    var text = $('input:text').val();
+    var text = $('#question input:text').val();
     $list.append('<li>' + text + '</li>');
-    $('input:text').val('');
+    $('#question input:text').val('');
   }); 
 
 });
@@ -27,3 +27,4 @@ $(function () {
   });
   });
 });
+p7

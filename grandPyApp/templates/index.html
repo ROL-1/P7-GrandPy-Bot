@@ -15,7 +15,21 @@
 		=========================================================================== -->				
 	<div class="jumbotron row" id="dialog">
 		<ul></ul><!-- Empty list waiting for input-->
-	</div>	
+	</div>
+	<!-- Map
+		=========================================================================== -->				
+		<div class="jumbotron row" id="map">
+			<div id='map' style='width: 400px; height: 300px;'></div>
+			<script>
+			mapboxgl.accessToken = 'pk.eyJ1Ijoicm9sLTEiLCJhIjoiY2tncnhvOHZtMGpleTJ4cXdrenN0aGMzYSJ9.DikocYiTLvwfLSvHwD42Hw';
+			var map = new mapboxgl.Map({
+			container: 'map',
+			style: 'mapbox://styles/mapbox/streets-v11',
+			center: [-0.50, 44.80], // starting position [lng, lat]
+			zoom: 9 // starting zoom
+			});
+			</script>
+		</div>		
 
 	<!-- Form 
 	============================================================================ -->
