@@ -15,11 +15,11 @@ body
 }	
 
 /* Text and image formatting*/
-title
+#home_title
 {
 	color:rgb(4, 124, 0);
 }
-h1
+#teaser
 {
 	margin-bottom: 20px;
 	color:rgb(255, 60, 0);
