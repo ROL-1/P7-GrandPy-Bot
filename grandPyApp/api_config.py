@@ -8,5 +8,10 @@ geocoding = {
 "RESULTS_LIMIT" : "1",
 }
 
-### 
+### wikipedia.py ###
+wikipedia = {
+"URL" : "https://fr.wikipedia.org/w/api.php",
+"SENTENCES_LIMIT" : "3",
+"RESULTS_LIMIT" : "1",
+}
 

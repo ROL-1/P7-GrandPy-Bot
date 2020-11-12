@@ -45,7 +45,8 @@ class Parser:
         # print('self.parsed_string', self.parsed_string) #TC
         return self.parsed_string
         
-a = Parser("Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?")
+# a = Parser("Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?")
+# print(a.parsed_string)
 
 # Parser
 

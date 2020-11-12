@@ -5,6 +5,7 @@ Defines the 'views' for each 'routes'.
 
 from flask import Flask, render_template, jsonify, request
 
+from main import Main
 
 app = Flask(__name__) # name the WSGI application : "app"
 
@@ -18,19 +19,21 @@ def index():
 def getAnswer():
     """Redirects to the files until get result (formatable in json)."""
     question_send = request.form['question']
-    # a = $_POST['question']
-    print('\n in : ', question_send) #TC
+
+    reponse = Main(question_send)
+
+    print('\nin : ', question_send) #TC
     
     out = jsonify({
-        'answer':question_send
+        'answer' : question_send,
+        'geocoding_results' : reponse.geocoding_results,
+        'wiki_results' : reponse.wiki_results,
     })  
+
     print('out : ', out) #TC
     print('out_type : ', type(out),'\n') #TC
-    return out
 
-    # return jsonify({
-    #     'questionAlpha' : a
-    # }) 
+    return out
 
 
 

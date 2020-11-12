@@ -2,9 +2,10 @@
 
 import pytest
 import requests
+
 from grandPyApp.geocoding import Geocoding
 
-class Test_Geocoding:
+class TestGeocoding:
     """Test for class : Geocoding."""
 
     def test_geocoding(self, monkeypatch):

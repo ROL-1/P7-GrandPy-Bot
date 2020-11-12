@@ -26,6 +26,9 @@ $(function() {
         let $list;
         $list = $('#dialog ul');
         $list.append('<li>' + data['answer'] + '</li>');
+        $list.append('<li>' + data['geocoding_results'] + '</li>');
+        $list.append('<li>' + data['wiki_results'] + '</li>');
+        console.log(data)
         $('#question input:text').val('');
       },
     )
