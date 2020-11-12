@@ -6,7 +6,7 @@ class WikiApi:
     """Search a localisation.
 
     From : a string.
-    Return : coordinates ; 3 phrases about the localisation.
+    Return : coordinates ; 3 sentences about the localisation.
     """
 
     def __init__(self, parsed_string): # parsed_string # TC
@@ -24,15 +24,15 @@ class WikiApi:
             "exsentences": "3", # nb sentences
             "gsrlimit":"1",  # nb results
         }
-        self.wiki_results = ''
-        self.wiki_request()
+        self.wiki_results = self.wiki_request()
 
     def wiki_request(self):
         """Create and pass request for Wiki Media Api."""
         request = requests.get(url=self.URL, params=self.PARAMS)
-        self.wiki_results = request.json()
-        # print('wiki_results', self.wiki_results) # TC
-        return self.wiki_results
+        return request.json()
 
-W = WikiApi("pont bordeaux") # TC
-print(W.wiki_results)
+
+
+
+# W = WikiApi("pont bordeaux") # TC
+# print(W.wiki_results) # TC

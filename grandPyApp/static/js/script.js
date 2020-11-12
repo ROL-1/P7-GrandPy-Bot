@@ -32,8 +32,6 @@ $(function() {
   }); 
 });
 
-
-
 // Scrollspy smooth
 $(function () {
   $('header a').on('click', function(e) {
@@ -47,13 +45,13 @@ $(function () {
   });
 });
 
-// // Mapbox
-// $(function () {
-// mapboxgl.accessToken = 'pk.eyJ1Ijoicm9sLTEiLCJhIjoiY2tncnhvOHZtMGpleTJ4cXdrenN0aGMzYSJ9.DikocYiTLvwfLSvHwD42Hw';
-// var map = new mapboxgl.Map({
-//     container: 'mapbox',
-//     style: 'mapbox://styles/mapbox/streets-v11',
-//     center: [-0.50, 44.80], // starting position [lng, lat]
-//     zoom: 9 // starting zoom
-//   });
-// });
+// Mapbox
+$(function () {
+mapboxgl.accessToken = 'pk.eyJ1Ijoicm9sLTEiLCJhIjoiY2tncnhvOHZtMGpleTJ4cXdrenN0aGMzYSJ9.DikocYiTLvwfLSvHwD42Hw';
+var map = new mapboxgl.Map({
+    container: 'mapbox',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [-0.50, 44.80], // starting position [lng, lat]
+    zoom: 9 // starting zoom
+  });
+});

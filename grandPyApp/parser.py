@@ -30,7 +30,7 @@ class Parser:
             stopwords_list = json.load(json_data)
         
         # Add specifics words to the rejected list :
-        new_words = ['est-ce','salut'] #TC - CONFIG
+        new_words = ['est-ce','salut','grandpy','py'] #TC - CONFIG
         stopwords_list.extend(new_words)
 
         # Remove empty words
@@ -45,7 +45,7 @@ class Parser:
         # print('self.parsed_string', self.parsed_string) #TC
         return self.parsed_string
         
-# a = Parser("Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?")
+a = Parser("Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?")
 
 # Parser
 

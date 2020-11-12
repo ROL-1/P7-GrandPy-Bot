@@ -11,11 +11,12 @@ app = Flask(__name__) # name the WSGI application : "app"
 @app.route('/') # a "view"
 @app.route('/index/') # don't forget "/" at the end
 def index():
+    """Directs to index page."""
     return render_template("index.html") # TC
 
 @app.route('/api/getAnswer', methods = ['POST'])
 def getAnswer():
-    # directs to the files until get result (formatable in json)
+    """Redirects to the files until get result (formatable in json)."""
     question_send = request.form['question']
     # a = $_POST['question']
     print('\n in : ', question_send) #TC
