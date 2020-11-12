@@ -6,7 +6,7 @@ Return : 1 search result, with coordinates (json)
 """
 
 import requests
-from config import geocoding
+from grandPyApp.api_config import geocoding
 
 class Geocoding:
     """Search localisation."""
@@ -20,12 +20,9 @@ class Geocoding:
             "country" : geocoding['COUNTRY'],
             "limit": geocoding['RESULTS_LIMIT']
         }
-        self.Geocoding_results = self.Get_Geocoding()
+        self.Geocoding_results = self.get_Geocoding()
 
-    def Get_Geocoding(self):
+    def get_Geocoding(self):
         """Create and pass request for Geocoding API (MapBox)."""
         request = requests.get(url=self.URL, params=self.PARAMS)
         return request.json()
-
-G = Geocoding("bordeaux")# TC
-print(G.Geocoding_results) # TC
