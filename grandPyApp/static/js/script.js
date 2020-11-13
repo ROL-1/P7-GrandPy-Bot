@@ -26,15 +26,15 @@ function Mapbox(data) {
     center: data['geo_coord_results'], // [-0.50, 44.80], // starting position [lng, lat]
     zoom: 9 // starting zoom
   });
+  var marker = new mapboxgl.Marker()
+    .setLngLat(data['geo_coord_results'])
+    .addTo(map);
 };
 
 // Listen Form send and use POST request
 $(function() {
-
-  let $question;
-  $question = $('#question');
-
-  $question.on('submit', function(e) {
+  $('#question').on('submit', function(e) {
+    $('#loading').show();
     e.preventDefault();
     $.post(
       '/api/getAnswer', // route for response file
@@ -49,6 +49,7 @@ $(function() {
         $('#question input:text').val('');
         // Display and refresh map position with coordinates.
         $('#jb_map').show("slow");
+        $('#loading').hide();
         Mapbox(data);
       },
     )

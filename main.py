@@ -18,8 +18,8 @@ class Main:
         self.wiki_results = wiki_return[pageid]['extract']
         
         
-M = Main("mairie caen")
-print('##PARSED##',M.parsed_string)
-print('##GEO-COORD##',M.geo_coord_results)
-print('##GEO-ADRESS##',M.geo_adress_results)
-print('##WIKI##',M.wiki_results)
+# M = Main("mairie caen")
+# print('##PARSED##',M.parsed_string)
+# print('##GEO-COORD##',M.geo_coord_results)
+# print('##GEO-ADRESS##',M.geo_adress_results)
+# print('##WIKI##',M.wiki_results)

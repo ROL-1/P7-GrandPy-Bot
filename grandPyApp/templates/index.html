@@ -6,9 +6,9 @@
 	================================================================================ -->
 	<div class="jumbotron row" id="logo">
 		<h1 class="text-center" id="home_title">GrandPy Bot</h1>				
-		<img class="GrandPiBotte" src={{ url_for('static', filename='img/GrandPiBotte.png') }} alt="GrandPiBotte">  
+		<img id="GrandPiBotte" src={{ url_for('static', filename='img/GrandPiBotte.png') }} alt="GrandPiBotte">  
 		<h2 class="text-center" id="teaser">"GrandPy Bot : ça me botte !"</h2>
-		<p class="text-justify col-sm-12 col-md-7">Le GrandPy Bot, peut trouver n'importe quel endroit. Demandez lui de trouver une adresse et il la trouvera ! Il se peut même qu'il ait une petite histoire à raconter à son propos.</p>
+		<p class="text-justify">Le GrandPy Bot, peut trouver n'importe quel endroit. Demandez lui de trouver une adresse et il la trouvera ! Il se peut même qu'il ait une petite histoire à raconter à son propos.</p>
 	</div>
 
 	<!-- Dialog 
@@ -19,7 +19,7 @@
 
 	<!-- Map
 	=========================================================================== -->				
-	<div class="jumbotron row" id="jb_map">
+	<div class="jumbotron row" id="jb_map">		
 		<div id='mapbox' style='width: 400px; height: 300px;'></div>
 	</div>			
 
@@ -28,7 +28,8 @@
 	<form id="question"> 
 		<label>Votre question :</label>
 		<input type="text" id="userquestion" class="form-control"></input><br>
-		<button type="submit" class="btn btn-default pull-right" id="add" value="add">Envoyer</button>
+		<button type="submit" class="btn btn-default pull-right" id="add" value="add">Envoyer</button>	
+		<div id="loading"><img class="pull-right" id="loading_gif" src={{ url_for('static', filename='img/loading.gif') }} alt="Loading gif"></div>	
 	</form>	
 	
 {% endblock %}
