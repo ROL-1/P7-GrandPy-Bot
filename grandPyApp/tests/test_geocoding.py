@@ -20,4 +20,4 @@ class TestGeocoding:
         monkeypatch.setattr(Geocoding, 'get_Geocoding', mock_geocoding)
 
         G = Geocoding(parsed_string)
-        assert G.Geocoding_results == results
+        assert G.geocoding_results == results

@@ -17,7 +17,11 @@ def index():
 
 @app.route('/api/getAnswer', methods = ['POST'])
 def getAnswer():
-    """Redirects to the files until get result (formatable in json)."""
+    """ 
+    In : Retrive user question. 
+    Act : Send it to main class. 
+    Out : Return results (in json).
+    """
     question_send = request.form['question']
 
     reponse = Main(question_send)
@@ -26,12 +30,12 @@ def getAnswer():
     
     out = jsonify({
         'answer' : question_send,
-        'geocoding_results' : reponse.geocoding_results,
+        'geo_coord_results' : reponse.geo_coord_results,
+        'geo_adress_results' : reponse.geo_adress_results,
         'wiki_results' : reponse.wiki_results,
     })  
 
     print('out : ', out) #TC
-    print('out_type : ', type(out),'\n') #TC
 
     return out
 

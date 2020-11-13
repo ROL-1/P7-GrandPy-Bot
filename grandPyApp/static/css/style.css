@@ -30,6 +30,11 @@ img {
     margin-right: auto;
 }
 
+/* Mapbox */
+#jb_map{
+	display: none;
+}
+
 /* Footer */
 footer.row {
 	margin-top: 50px;

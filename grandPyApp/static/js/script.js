@@ -7,6 +7,27 @@ $('#question').keypress((e) => {
   };
 });
 
+// Fill "dialog" with input text
+function Insert_dialog(data) {
+  let $list;
+  $list = $('#dialog ul');
+  $list.append('<li>' + "Votre question : " + data['answer'] + '</li>');
+  // $list.append('<li>' + data['geo_coord_results'] + '</li>');
+  $list.append('<li>' + "L'adresse est la suivante : " + data['geo_adress_results'] + '</li>');
+  $list.append('<li>' + "Et pour votre information : " + data['wiki_results'] + '</li></br>');  
+};
+
+// Mapbox
+function Mapbox(data) {
+  mapboxgl.accessToken = 'pk.eyJ1Ijoicm9sLTEiLCJhIjoiY2tncnhvOHZtMGpleTJ4cXdrenN0aGMzYSJ9.DikocYiTLvwfLSvHwD42Hw';
+  var map = new mapboxgl.Map({
+    container: 'mapbox',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: data['geo_coord_results'], // [-0.50, 44.80], // starting position [lng, lat]
+    zoom: 9 // starting zoom
+  });
+};
+
 // Listen Form send and use POST request
 $(function() {
 
@@ -21,15 +42,14 @@ $(function() {
         question : $('#question input:text').val(), 
       }, // datas
       // function callback: to manage the return (alias "sucess")
-      // Fill "dialog" with input text
       function(data) {
-        let $list;
-        $list = $('#dialog ul');
-        $list.append('<li>' + data['answer'] + '</li>');
-        $list.append('<li>' + data['geocoding_results'] + '</li>');
-        $list.append('<li>' + data['wiki_results'] + '</li>');
-        console.log(data)
+        // Insert user question and answers in "dialog" "div"
+        Insert_dialog(data);
+        // Clean input form
         $('#question input:text').val('');
+        // Display and refresh map position with coordinates.
+        $('#jb_map').show("slow");
+        Mapbox(data);
       },
     )
   }); 
@@ -48,13 +68,3 @@ $(function () {
   });
 });
 
-// Mapbox
-$(function () {
-mapboxgl.accessToken = 'pk.eyJ1Ijoicm9sLTEiLCJhIjoiY2tncnhvOHZtMGpleTJ4cXdrenN0aGMzYSJ9.DikocYiTLvwfLSvHwD42Hw';
-var map = new mapboxgl.Map({
-    container: 'mapbox',
-    style: 'mapbox://styles/mapbox/streets-v11',
-    center: [-0.50, 44.80], // starting position [lng, lat]
-    zoom: 9 // starting zoom
-  });
-});
