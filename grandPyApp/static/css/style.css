@@ -30,22 +30,29 @@ img {
 	margin-right: auto;
 }
 #GrandPiBotte{	
-	height : 20%;
-	width : 20%;
+	height : 150px;
+	width : 150px;
 }
 
 /* Loading gif */
-#loading{
-	display: none;
-}
 #loading_gif{	
-	height : 5%;
-	width : 5%;
+	height : 50px;
+	width : 50px;
+	margin-left: 50px;
+	display: none;
 }
 
 /* Mapbox */
 #jb_map{
 	display: none;
+}
+
+/* Fail_box */
+#fail_box{
+	display: none;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	color:rgb(167, 40, 1);
 }
 
 /* Footer */

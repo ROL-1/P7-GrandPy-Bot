@@ -34,25 +34,29 @@ function Mapbox(data) {
 // Listen Form send and use POST request
 $(function() {
   $('#question').on('submit', function(e) {
-    $('#loading').show();
+    $('#loading_gif').show(); // Display loading gif
+    $('#fail_box').hide(); // Hide fail_box
+    $('#fail_text').empty(); // Clean fail_text
     e.preventDefault();
     $.post(
-      '/api/getAnswer', // route for response file
-      {
-        question : $('#question input:text').val(), 
-      }, // datas
-      // function callback: to manage the return (alias "sucess")
-      function(data) {
-        // Insert user question and answers in "dialog" "div"
-        Insert_dialog(data);
-        // Clean input form
-        $('#question input:text').val('');
-        // Display and refresh map position with coordinates.
-        $('#jb_map').show("slow");
-        $('#loading').hide();
-        Mapbox(data);
+      '/api/getAnswer',
+      {question : $('#question input:text').val(), 
       },
     )
+    .done(function(data){   
+    Insert_dialog(data); // Return results in "dialog" zone.    
+    $('#question input:text').val(''); // Clean input form
+    // Display and refresh map position with coordinates.
+    $('#jb_map').show("slow");
+    Mapbox(data);
+    // Hide loading gif   
+    $('#loading_gif').hide();     
+    })
+    .fail(function(){
+      $('#fail_box').show("slow");
+      $('#fail_text').append('Requête échouée !'); 
+      $('#loading_gif').hide();    
+    })
   }); 
 });
 
@@ -68,4 +72,3 @@ $(function () {
     });
   });
 });
-

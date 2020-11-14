@@ -15,6 +15,7 @@
 		=========================================================================== -->				
 	<div class="jumbotron row" id="dialog">
 		<ul></ul><!-- Empty list waiting for input-->
+		<img class="pull-left" id="loading_gif" src={{ url_for('static', filename='img/loading.gif') }} alt="Loading gif">
 	</div>
 
 	<!-- Map
@@ -28,8 +29,13 @@
 	<form id="question"> 
 		<label>Votre question :</label>
 		<input type="text" id="userquestion" class="form-control"></input><br>
-		<button type="submit" class="btn btn-default pull-right" id="add" value="add">Envoyer</button>	
-		<div id="loading"><img class="pull-right" id="loading_gif" src={{ url_for('static', filename='img/loading.gif') }} alt="Loading gif"></div>	
+		<button type="submit" class="btn btn-default pull-right" id="add" value="add">Envoyer</button>			
 	</form>	
+
+	<!-- Fail box
+	=========================================================================== -->				
+	<div class="jumbotron row col-xs-10" id="fail_box">
+		<p id='fail_text'></p>
+	</div>	
 	
 {% endblock %}
