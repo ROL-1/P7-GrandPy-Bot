@@ -5,12 +5,12 @@ Defines the 'views' for each 'routes'.
 
 from flask import Flask, render_template, jsonify, request
 
-from main import Main
+from grandPyApp.main import Main
 
 app = Flask(__name__) # name the WSGI application : "app"
 
-@app.route('/') # a "view"
-@app.route('/index/') # don't forget "/" at the end
+@app.route('/')
+@app.route('/index/')
 def index():
     """Directs to index page."""
     return render_template("index.html") # TC
@@ -18,7 +18,7 @@ def index():
 @app.route('/api/getAnswer', methods = ['POST'])
 def getAnswer():
     """ 
-    In : Retrive user question. 
+    In : user question (string)
     Act : Send it to main class. 
     Out : Return results (in json).
     """

@@ -1,8 +1,8 @@
 """Search localisation.
 
-From : parsed user question (string).
-Using : MediaWiki API (external API).
-Return : 1 search result, with introduction (json)
+In: parsed user question (string).
+Act : Use MediaWiki API (external API).
+Out : 1 search result, with introduction (json)
 """
 
 import requests

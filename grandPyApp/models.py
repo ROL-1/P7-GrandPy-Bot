@@ -1,1 +1,0 @@
-"""Interface and data structure."""

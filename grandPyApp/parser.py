@@ -5,7 +5,15 @@ import json
 from string import punctuation
 
 class Parser:
-    """Parse user question to keep useful words."""
+    """Parse user question to keep useful words.
+
+    In : user question (string)
+    Act : 
+        Change the sentence in lowercase.
+        Remove punctuation.
+        Remove words find in "stopwords.json" or "new_words" list.
+    Out : Return parsed_string (string) with words separates by spaces.
+    """
 
     def __init__(self, question_send):  
         """Load question send by user."""  
@@ -47,14 +55,3 @@ class Parser:
         
 # a = Parser("Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?")
 # print(a.parsed_string)
-
-# Parser
-
-# Récupérer la string
-# Découper la string en mots
-## créer liste de mots (séparés par espace)
-# Retirer les mots inutiles
-## "liste mots retenus" = []
-## if "mot" in NOTIN "liste_stopwords" => add "mot" in "liste mots retenus"
-# Retirer caractères spéciaux
-# Retourner "liste de mots retenus" 
