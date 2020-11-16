@@ -38,8 +38,3 @@ def getAnswer():
     print('out : ', out) #TC
 
     return out
-
-
-
-# https://stackoverflow.com/questions/3477333/what-is-the-difference-between-post-and-get/3477374#3477374
-# https://sutterlity.gitbooks.io/apprendre-jquery/content/ajax.html

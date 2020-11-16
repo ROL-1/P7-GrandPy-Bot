@@ -19,36 +19,41 @@ class Parser:
         """Load question send by user."""  
         self.question_send = question_send
         self.words_send = []
+        self.stopwords_list = []
+        self.useful_words = []
         self.parsed_string = ''
         self.cleaner()
-        self.parseWords()
+        self.openStopwords()
+        self.addStopwords()
+        self.removeStopwords()
+        self.createParsedString()
 
     def cleaner(self):
         """Remove punctuation and split the string to return a list."""
         lower_string = self.question_send.lower()
         no_punctuation = ''.join([i if i not in punctuation else ' ' for i in lower_string])
         self.words_send = no_punctuation.split()
-
-    def parseWords(self):
-        """Create "useful_words" list by not selecting words from the reject lists."""
-        with open('grandPyApp/stopwords_fr.json') as json_data:
-            stopwords_list = json.load(json_data)
         
-        # Add specifics words to the rejected list :
-        new_words = ['grandpy','py'] #TC - CONFIG
-        stopwords_list.extend(new_words)
+    def openStopwords(self):
+        """Open and read "stopwords.json" file."""
+        with open('grandPyApp/stopwords_fr.json') as json_data:
+            self.stopwords_list = json.load(json_data)
 
-        # Remove empty words
-        useful_words = []
+    def addStopwords(self):
+        """Extend stopwords list with personals words."""
+        new_words = ['grandpy','py'] #TC - MOVE TO CONFIG
+        self.stopwords_list.extend(new_words)
+
+    def removeStopwords(self):
+        """Create "useful_words" list by not selecting words from the reject lists."""        
         for word in self.words_send :
-            if word not in stopwords_list:
-                useful_words.append(word)
+            if word not in self.stopwords_list:
+                self.useful_words.append(word)
 
-        # Change list in string
-        self.parsed_string = (' ').join(useful_words)
-
-        print('\n###self.parsed_string### : ', self.parsed_string) #TC
+    def createParsedString(self):
+        """Create "parsed _string" with only useful words."""
+        self.parsed_string = (' ').join(self.useful_words)
+        print('\n###parsed_string### : ', self.parsed_string) #TC
         return self.parsed_string
         
 # a = Parser("Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?")
-# print(a.parsed_string)

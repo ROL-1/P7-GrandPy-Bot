@@ -1,4 +1,4 @@
-"""Search localisation.
+"""Search a localisation with Geocoding API.
 
 In : parsed user question (string).
 Act : Geocoding API (external API).
@@ -10,7 +10,7 @@ import requests
 from grandPyApp.api_config import geocoding
 
 class Geocoding:
-    """Search a localisation."""
+    """Search a localisation with Geocoding API."""
 
     def __init__(self, parsed_string):
         """Define parameters to create endpoint."""

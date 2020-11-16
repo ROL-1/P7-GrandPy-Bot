@@ -2,7 +2,7 @@
 
 import pytest
 
-from main import Main
+from grandPyApp.main import Main
 
 class TestMain:
     """Test for class : Main."""

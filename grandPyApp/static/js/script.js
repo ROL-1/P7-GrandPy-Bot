@@ -1,4 +1,4 @@
-// $.(document).ready(function(){ 
+ // $.(document).ready(function(){ 
 
 // Mapbox
 function mapbox(data) {
@@ -14,14 +14,15 @@ function mapbox(data) {
     .addTo(map);
 };
 
-// Fill "dialog" with input text
+// Fill "dialog" with input text and scroll down in div
 function insertDialog(data) {
   let $list;
   $list = $('#dialog ul');
   $list.append('<li>' + "Votre question : " + data['answer'] + '</li>');
   // $list.append('<li>' + data['geo_coord_results'] + '</li>');
   $list.append('<li>' + "L'adresse est la suivante : " + data['geo_adress_results'] + '</li>');
-  $list.append('<li>' + "Et pour votre information : " + data['wiki_results'] + '</li></br>');  
+  $list.append('<li>' + "Et pour votre information : " + data['wiki_results'] + '</li></br>');
+  $('#dialog').scrollTop($('#dialog')[0].scrollHeight);
 };
 
 // Submit form on Enter key press

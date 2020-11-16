@@ -21,3 +21,4 @@ class TestGeocoding:
 
         G = Geocoding(parsed_string)
         assert G.geocoding_results == results
+    

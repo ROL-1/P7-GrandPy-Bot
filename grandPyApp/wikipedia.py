@@ -1,4 +1,4 @@
-"""Search localisation.
+"""Search localisation with Mediawiki API.
 
 In: parsed user question (string).
 Act : Use MediaWiki API (external API).
@@ -10,7 +10,7 @@ import requests
 from grandPyApp.api_config import wikipedia
 
 class WikiApi:
-    """Search a localisation."""
+    """Search a localisation with Mediawiki API."""
 
     def __init__(self, parsed_string): # parsed_string # TC
         """Define parameters to create endpoint."""          
