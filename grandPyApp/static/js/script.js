@@ -31,13 +31,13 @@ $('#question').keypress((e) => {
   };
 });
 
-// Enable submit button if input is not empty
-$("#userquestion").on('keyup', function(){
-  if($(this).val().length !=0)
-    $('#sendBtn').attr("disabled",false);
-  else
-    $('#sendBtn').attr("disabled",true);
-});
+// // Enable submit button if input is not empty
+// $("#userquestion").on('keyup', function(){
+//   if($(this).val().length !=0)
+//     $('#sendBtn').attr("disabled",false);
+//   else
+//     $('#sendBtn').attr("disabled",true);
+// });
 
 
 // Listen Form send and use POST request
