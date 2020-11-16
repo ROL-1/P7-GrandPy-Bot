@@ -39,12 +39,10 @@ img {
 	overflow-x: hidden;
 	overflow-y: visible;
 	background-color: rgb(238, 210, 153);
-	float: left;
 }
 
 /* Mapbox */
 #jb_map{
-	float: right;
 	display: none;
 }
 
@@ -57,16 +55,18 @@ img {
 	margin-top: 20px;
 }
 
-/* Footer */
-footer.row {
-	margin-top: 400px;
-}
-
 /* Links */
 a:hover
 {
   color:green; 
 }
 
-
-/*  @media (max-width: xxx px) { */
+/* Style for media > 1200 px */
+@media (min-width: 1200px) {
+	#dialog{
+		float:left
+	} 
+	#jb_map {
+		float:right
+	}
+} 

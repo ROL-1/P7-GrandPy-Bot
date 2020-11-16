@@ -13,20 +13,20 @@
 
 	<!-- Dialog 
 		=========================================================================== -->				
-	<div class="jumbotron row float-left col-xs-6" id="dialog">
+	<div class="jumbotron row col-xs-13 col-xl-6" id="dialog">
 		<ul></ul><!-- Empty list waiting for input-->
 		<img class="pull-left" id="loading_gif" src={{ url_for('static', filename='img/loading.gif') }} alt="Loading gif">
 	</div>
 	
 	<!-- Map
 	=========================================================================== -->				
-	<div class="jumbotron row float-right col-xs-6" id="jb_map">		
+	<div class="jumbotron row col-xs-13 col-xl-6" id="jb_map">		
 		<div id='mapbox' style='width: 400px; height: 300px;'></div>
 	</div>			
 
 	<!-- Form 
 	============================================================================ -->
-	<form class="col-xs-12" id="question"> 
+	<form class="col-sm-12" id="question"> 
 		<label>Votre question :</label>
 		<input type="text" id="userquestion" class="form-control" placeholder="Posez votre question ici."></input><br>
 		<button type="submit" class="btn btn-default pull-right" id="sendBtn" value="add" disabled="true">Envoyer</button>			
