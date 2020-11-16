@@ -23,3 +23,6 @@ GrandPy envoie un nouveau message : "Mais t'ai-je déjà raconté l'histoire de 
 
 ## Lien vers le Trello :
 https://trello.com/b/HvdsLlAh/p7-grandpy-bot
+
+## Lien vers l'application hébergée sur Heroku :
+https://grand-py.herokuapp.com/

@@ -8,4 +8,4 @@ if __name__ == "__main__":
     (To be removed when app will be online.)
     Open error log page when needed.
     """
-    app.run(debug=True) # Launch server
+    app.run(debug=False) # Launch server
