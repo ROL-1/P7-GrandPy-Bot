@@ -37,7 +37,9 @@ class Main:
                 self.wiki_results = 'REFORMULEZ !' # TC : A GERER ####
             else:
                 raise
-        
+        except IndexError:           
+            self.wiki_results = 'REFORMULEZ !' # TC : A GERER ####
+
         
 # M = Main("mairie")
 # print('##PARSED##',M.parsed_string)

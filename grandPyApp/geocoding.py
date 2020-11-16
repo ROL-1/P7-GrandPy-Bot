@@ -1,8 +1,8 @@
 """Search localisation.
 
-From : parsed user question (string).
-Using : Geocoding API (external API).
-Return : 1 search result, with coordinates (json)
+In : parsed user question (string).
+Act : Geocoding API (external API).
+Out : 1 search result, with coordinates (json)
 """
 
 import requests

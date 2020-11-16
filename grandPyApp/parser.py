@@ -24,13 +24,10 @@ class Parser:
         self.parseWords()
 
     def cleaner(self):
-        """Split the string from user question, and remove punctuation."""
+        """Remove punctuation and split the string to return a list."""
         lower_string = self.question_send.lower()
-        no_punctuation_list = [i.strip(punctuation) for i in lower_string.split()]         
-        for word in no_punctuation_list:
-            if word != '':
-                self.words_send.append(word)
-        # print('words_send', self.words_send) #TC
+        no_punctuation = ''.join([i if i not in punctuation else ' ' for i in lower_string])
+        self.words_send = no_punctuation.split()
 
     def parseWords(self):
         """Create "useful_words" list by not selecting words from the reject lists."""
@@ -38,7 +35,7 @@ class Parser:
             stopwords_list = json.load(json_data)
         
         # Add specifics words to the rejected list :
-        new_words = ['est-ce','salut','grandpy','py'] #TC - CONFIG
+        new_words = ['grandpy','py'] #TC - CONFIG
         stopwords_list.extend(new_words)
 
         # Remove empty words
@@ -50,7 +47,7 @@ class Parser:
         # Change list in string
         self.parsed_string = (' ').join(useful_words)
 
-        # print('self.parsed_string', self.parsed_string) #TC
+        print('\n###self.parsed_string### : ', self.parsed_string) #TC
         return self.parsed_string
         
 # a = Parser("Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?")

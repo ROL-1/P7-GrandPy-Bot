@@ -22,7 +22,7 @@ class WikiApi:
             "explaintext":"1", # text or html (boolean y/n)
             "exintro": "1", # intro (boolean y/n)
             "format": "json",
-            "generator": "search", # how to search
+            "generator": "search", # search method
             "gsrsearch": search_terms, # terms search
             "exsentences": wikipedia['SENTENCES_LIMIT'], # nb sentences
             "gsrlimit": wikipedia['RESULTS_LIMIT'],  # nb results
