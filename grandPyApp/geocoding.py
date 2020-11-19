@@ -18,7 +18,7 @@ class Geocoding:
         self.URL = geocoding['URL']+search_terms
         self.PARAMS = {
             "access_token" : geocoding['ACCESS_TOKEN'],
-            # "country" : geocoding['COUNTRY'],
+            "country" : geocoding['COUNTRY'],
             "limit": geocoding['RESULTS_LIMIT']
         }
         self.geocoding_results = self.get_Geocoding()
@@ -27,3 +27,5 @@ class Geocoding:
         """Create and pass request for Geocoding API (MapBox)."""
         request = requests.get(url=self.URL, params=self.PARAMS)
         return request.json()
+
+    # def adress():

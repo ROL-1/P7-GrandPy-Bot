@@ -1,31 +1,51 @@
 /* Body */
-body
-{	
+body {	
 	background-color : rgb(64, 131, 79);
 }	
 
+footer {
+	margin-top: 20px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
 /* Text and image formatting*/
-#home_title
-{
+#home_title {
 	color:rgb(247, 164, 0);
 }
-#teaser
-{
+#teaser {
 	margin-bottom: 20px;
 	color:rgb(36, 128, 0);
 }
-img {
+#GrandPiBotte {
 	display: block;
     margin-left: auto;
 	margin-right: auto;
 }
-#GrandPiBotte{	
+
+ul
+{
+  list-style-type: url('static/img/GrandPiBotte_Mini2.gif');
+  padding: 0;
+  margin: 0;
+}
+li
+{
+  background-image: url('static/img/GrandPiBotte_Mini2.gif');
+}
+
+.card{
+	border-radius: 15px !important;
+	background-color : rgb(64, 131, 79);
+} */
+
+
+#GrandPiBotte {	
 	height : 150px;
 	width : 150px;
 }
 
 /* Loading gif */
-#loading_gif{	
+#loading_gif {	
 	height : 50px;
 	width : 50px;
 	margin-left: 50px;
@@ -33,7 +53,7 @@ img {
 }
 
 /* Dialog */
-#dialog{
+#dialog {
 	overflow: scroll;
 	height : 400px;
 	overflow-x: hidden;
@@ -42,12 +62,12 @@ img {
 }
 
 /* Mapbox */
-#jb_map{
+#jb_map {
 	display: none;
 }
 
 /* Fail_box */
-#fail_box{
+#fail_box {
 	display: none;
 	padding-top: 1px;
 	padding-bottom: 1px;
@@ -56,17 +76,17 @@ img {
 }
 
 /* Links */
-a:hover
-{
+a:hover{
   color:green; 
 }
 
-/* Style for media > 1200 px */
-@media (min-width: 1200px) {
+
+/* Style for media > 992 px */
+@media (min-width: 992px) {
 	#dialog{
-		float:left
+		float:left;
 	} 
 	#jb_map {
-		float:right
+		float:right;
 	}
 } 
