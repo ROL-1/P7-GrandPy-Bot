@@ -10,29 +10,24 @@ $(document).ready(function(){
       zoom: 9 // starting zoom
     });
     var marker = new mapboxgl.Marker({color: '#40834f'})
-      .setLngLat(data['geo_coord_results'])
-      .addTo(map);
-    };
-
-  // Fill "dialog" with input text and scroll down in div
-  // function insertDialog(data) {
-  //   let miniBot = "<img id='miniBot' src='static/img/GrandPiBotte_Mini2.png' alt='miniBot' />"
-  //   let $list = $('#dialog ul');
-  //   $list.append('<li>'+ "Votre question : " + data['answer'] + '</li>');
-  //   // $list.append('<li>' + data['geo_coord_results'] + '</li>');
-  //   $list.append( "<p class='card'>" + miniBot + ": L'adresse est la suivante : " + data['geo_adress_results'] + "</p>.border");
-  //   $list.append( "<span class='card border-warning rounded'>" + miniBot + ": Et pour votre information : " + data['wiki_results'] + "</span>" +"<br/>");
-  //   $('#dialog').scrollTop($('#dialog')[0].scrollHeight);
-  // };
+    .setLngLat(data['geo_coord_results'])
+    .addTo(map);
+  };
 
   // Fill "dialog" with input text and scroll down in div
   function insertDialog(data) {    
     let $list = $('.messages');
     $('#message_template .text1').html(data['answer']);
-    $('#message_template .text2').html(data['geo_adress_results']);
-    $('#message_template .text3').html(data['wiki_results']);
+    $('#message_template .text2').html("<b>L'adresse est : </b>" + data['geo_adress_results']);
+    $('#message_template .text3').html("<b>Saviez-vous que : </b>" + data['wiki_results']);
+    if (data['geo_adress_results'] === 'Adresse inconnue.')
+      $('#message_template .text_wrapper2:eq(0)').addClass('text_wrapper2r').removeClass('text_wrapper2');
+    if (data['wiki_results'] === 'REFORMULEZ !')
+      $('#message_template .text_wrapper2:eq(1)').addClass('text_wrapper2r').removeClass('text_wrapper2');
     $($('#message_template').clone().html()).appendTo($list);
     $('#dialog').scrollTop($('#dialog')[0].scrollHeight);
+    // Reset colors
+    $('#message_template .text_wrapper2r').addClass('text_wrapper2').removeClass('text_wrapper2r');
   };
 
   // Submit form on Enter key press
