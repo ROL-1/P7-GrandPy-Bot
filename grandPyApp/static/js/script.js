@@ -21,13 +21,14 @@ $(document).ready(function(){
     $('#message_template .text2').html("<b>L'adresse est : </b>" + data['geo_adress_results']);
     $('#message_template .text3').html("<b>Saviez-vous que : </b>" + data['wiki_results']);
     if (data['geo_adress_results'] === 'Adresse inconnue.')
-      $('#message_template .text_wrapper2:eq(0)').addClass('text_wrapper2r').removeClass('text_wrapper2');
+      $('#message_template .text_wrapper2').addClass('text_wrapper2r').removeClass('text_wrapper2');
     if (data['wiki_results'] === 'REFORMULEZ !')
-      $('#message_template .text_wrapper2:eq(1)').addClass('text_wrapper2r').removeClass('text_wrapper2');
+      $('#message_template .text_wrapper3').addClass('text_wrapper3r').removeClass('text_wrapper3');
     $($('#message_template').clone().html()).appendTo($list);
     $('#dialog').scrollTop($('#dialog')[0].scrollHeight);
     // Reset colors
     $('#message_template .text_wrapper2r').addClass('text_wrapper2').removeClass('text_wrapper2r');
+    $('#message_template .text_wrapper3r').addClass('text_wrapper3').removeClass('text_wrapper3r');
   };
 
   // Submit form on Enter key press
