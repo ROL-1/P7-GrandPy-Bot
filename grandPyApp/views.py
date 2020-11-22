@@ -2,18 +2,18 @@
 
 Defines the 'views' for each 'routes'.
 """
-
+import os 
 from flask import Flask, render_template, jsonify, request
 
-from grandPyApp.main import Main
+from .main import Main
+from .settings import MAPBOX_API_KEY
 
 app = Flask(__name__) # name the WSGI application : "app"
 
 @app.route('/')
-@app.route('/index/')
 def index():
     """Directs to index page."""
-    return render_template("index.html") # TC
+    return render_template("index.html", ACCESS_TOKEN=MAPBOX_API_KEY) # TC
 
 @app.route('/api/getAnswer', methods = ['POST'])
 def getAnswer():

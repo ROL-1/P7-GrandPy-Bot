@@ -7,7 +7,8 @@ Out : 1 search result, with coordinates (json)
 
 import requests
 
-from grandPyApp.api_config import geocoding
+from ..api.apiconfig import geocoding
+from ..settings import MAPBOX_API_KEY
 
 class Geocoding:
     """Search a localisation with Geocoding API."""
@@ -17,7 +18,7 @@ class Geocoding:
         search_terms = parsed_string+'.json?' #"bordeaux" # parsed_string # TC
         self.URL = geocoding['URL']+search_terms
         self.PARAMS = {
-            "access_token" : geocoding['ACCESS_TOKEN'],
+            "access_token" : MAPBOX_API_KEY,
             "country" : geocoding['COUNTRY'],
             "limit": geocoding['RESULTS_LIMIT']
         }

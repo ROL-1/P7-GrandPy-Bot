@@ -1,8 +1,8 @@
 """Architecture file for grandPyApp."""
 
-from grandPyApp.parser import Parser
-from grandPyApp.geocoding import Geocoding
-from grandPyApp.wikipedia import WikiApi
+from .parser.parser import Parser
+from .api.geocoding import Geocoding
+from .api.wikipedia import WikiApi
 
 class Main:
     """"""    

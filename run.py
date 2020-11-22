@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 from grandPyApp import app
-from config import DEBUG
+from grandPyApp.settings import DEBUG
 
 if __name__ == "__main__":
     """

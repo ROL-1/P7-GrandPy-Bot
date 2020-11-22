@@ -22,6 +22,10 @@ class Parser:
         self.stopwords_list = []
         self.useful_words = []
         self.parsed_string = ''
+        self.parse()
+    
+    def parse(self):
+        """Launch functions."""
         self.cleaner()
         self.openStopwords()
         self.addStopwords()
@@ -36,7 +40,7 @@ class Parser:
         
     def openStopwords(self):
         """Open and read "stopwords.json" file."""
-        with open('grandPyApp/stopwords_fr.json') as json_data:
+        with open('grandPyApp/static/ressources/stopwords_fr.json') as json_data:
             self.stopwords_list = json.load(json_data)
 
     def addStopwords(self):

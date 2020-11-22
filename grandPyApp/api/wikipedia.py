@@ -7,7 +7,7 @@ Out : 1 search result, with introduction (json)
 
 import requests
 
-from grandPyApp.api_config import wikipedia
+from ..api.apiconfig import wikipedia
 
 class WikiApi:
     """Search a localisation with Mediawiki API."""

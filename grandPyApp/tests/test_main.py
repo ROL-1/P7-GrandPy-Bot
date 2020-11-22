@@ -1,7 +1,5 @@
 """Tests file for grandPyApp/main.py."""
 
-import pytest
-
 from grandPyApp.main import Main
 
 class TestMain:

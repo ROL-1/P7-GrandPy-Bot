@@ -2,7 +2,7 @@ $(document).ready(function(){
 
   // Mapbox
   function mapbox(data) {
-    mapboxgl.accessToken = MAPBOX_API_KEY; // Heroku maj ?
+    mapboxgl.accessToken = $ACCESS_TOKEN; // Heroku maj ?
     var map = new mapboxgl.Map({
       container: 'mapbox',
       style: 'mapbox://styles/mapbox/streets-v11',

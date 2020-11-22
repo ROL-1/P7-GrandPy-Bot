@@ -1,9 +1,8 @@
 """Tests file for grandPyApp/geocoding.py."""
 
-import pytest
 import requests
 
-from grandPyApp.geocoding import Geocoding
+from grandPyApp.api.geocoding import Geocoding
 
 class TestGeocoding:
     """Test for class : Geocoding."""
