@@ -2,7 +2,7 @@ $(document).ready(function(){
 
   // Mapbox
   function mapbox(data) {
-    mapboxgl.accessToken = 'pk.eyJ1Ijoicm9sLTEiLCJhIjoiY2tncnhvOHZtMGpleTJ4cXdrenN0aGMzYSJ9.DikocYiTLvwfLSvHwD42Hw';
+    mapboxgl.accessToken = MAPBOX_API_KEY;
     var map = new mapboxgl.Map({
       container: 'mapbox',
       style: 'mapbox://styles/mapbox/streets-v11',
@@ -100,9 +100,9 @@ $(document).ready(function(){
       e.preventDefault();
       var hash = this.hash;
       $('html, body').animate({
-        scrollTop: $(this.hash).offset().top
+        scrollTop: $(this.hash).offset().top-60
       }, 1000, function(){
-        window.location.hash = hash;
+        // window.location.hash = hash;
       });
     });
   });

@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 from grandPyApp import app
+from config import DEBUG
 
 if __name__ == "__main__":
     """
@@ -8,4 +9,4 @@ if __name__ == "__main__":
     (To be removed when app will be online.)
     Open error log page when needed.
     """
-    app.run(debug=True) # Launch server
+    app.run(debug=DEBUG)
