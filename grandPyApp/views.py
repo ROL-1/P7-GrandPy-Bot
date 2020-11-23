@@ -24,15 +24,17 @@ def getAnswer():
     """
     question_send = request.form['question']
 
-    reponse = Main(question_send)
+    response = Main(question_send)
 
     print('\nin : ', question_send) #TC
     
     out = jsonify({
         'answer' : question_send,
-        'geo_coord_results' : reponse.geo_coord_results,
-        'geo_adress_results' : reponse.geo_adress_results,
-        'wiki_results' : reponse.wiki_results,
+        'geo_coord_results' : response.geo_coord_results,
+        'geo_adress_results' : response.geo_adress_results,
+        'wiki_results' : response.wiki_results,
+        'geo_fail' : response.geo_fail,
+        'wiki_fail' : response.wiki_fail
     })  
 
     print('out : ', out) #TC

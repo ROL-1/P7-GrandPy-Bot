@@ -27,6 +27,6 @@ class Geocoding:
     def get_Geocoding(self):
         """Create and pass request for Geocoding API (MapBox)."""
         request = requests.get(url=self.URL, params=self.PARAMS)
-        return request.json()
+        return request
 
     # def adress():

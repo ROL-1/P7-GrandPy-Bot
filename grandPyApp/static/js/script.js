@@ -20,9 +20,9 @@ $(document).ready(function(){
     $('#message_template .text1').html(data['answer']);
     $('#message_template .text2').html("<b>L'adresse est : </b>" + data['geo_adress_results']);
     $('#message_template .text3').html("<b>Saviez-vous que : </b>" + data['wiki_results']);
-    if (data['geo_adress_results'] === 'Adresse inconnue.')
+    if (data['geo_fail'] === true)
       $('#message_template .text_wrapper2').addClass('text_wrapper2r').removeClass('text_wrapper2');
-    if (data['wiki_results'] === 'REFORMULEZ !')
+    if (data['wiki_fail'] === true)
       $('#message_template .text_wrapper3').addClass('text_wrapper3r').removeClass('text_wrapper3');
     $($('#message_template').clone().html()).appendTo($list);
     $('#dialog').scrollTop($('#dialog')[0].scrollHeight);

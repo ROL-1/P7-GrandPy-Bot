@@ -32,7 +32,4 @@ class WikiApi:
     def wiki_request(self):
         """Create and pass request for Wiki Media Api."""
         response = requests.get(url=self.URL, params=self.PARAMS)
-        return response.json()
-
-# W = WikiApi("bordeaux") # TC
-# print(W.wiki_results) # TC
+        return response
