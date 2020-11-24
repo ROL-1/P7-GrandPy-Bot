@@ -12,12 +12,11 @@ class Interpreter:
     """
 
     def __init__(self, parsed_string):  
-        """Load question send by user."""  
+        """Load question send by user."""
         self.words = parsed_string.split()
-        self.better_words = []
-        self.lexical_fields()
+        self.better_words = self._lexical_fields()
 
-    def lexical_fields(self):
+    def _lexical_fields(self):
         """Search words starting by."""
         LOCALISE = ["^adres","^indiqu","^situ","^localis","^trouv","^degot","^procur","^donn","^cherch","^obten","^recuper"]
         trashlist = []
@@ -26,10 +25,10 @@ class Interpreter:
                 found = re.match(l,w)
                 if found:
                     trashlist.append(w)
-        self.better_words = ' '.join([x for x in self.words if x not in trashlist])
+        better_words = ' '.join([x for x in self.words if x not in trashlist])
+        return better_words
 
-
-        
+       
 
 # I = Interpreter("indiquer où se trouve le musée d'art et d'histoire de Fribourg")
 

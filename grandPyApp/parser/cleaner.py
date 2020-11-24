@@ -15,24 +15,28 @@ class Cleaner:
     """
 
     def __init__(self, question_send):
-        """"""
+        """Laucnh functions."""
         self.question_send = question_send
-        self.question_cleaned = []
-        self.lower_string()
-        self.no_punctuation()
-        self.unicode_normalizer()
+        self.question_cleaned = self._clean()
 
+    @property
+    def _uncapitalized_string(self):
+        """Uncapitalize string."""
+        uncapitalized_string = self.question_send.lower()
+        return uncapitalized_string
 
-    def lower_string(self):
-        """"""
-        self.lower_string = self.question_send.lower()
+    @property
+    def _no_punctuation(self):
+        """Remove puncutation."""
+        no_punctuation = ''.join([i if i not in punctuation else ' ' for i in self._uncapitalized_string])
+        return no_punctuation
 
-    def no_punctuation(self):
-        """"""
-        self.no_punctuation = ''.join([i if i not in punctuation else ' ' for i in self.lower_string])
-
-    def unicode_normalizer(self):
+    @property
+    def _no_accentuation(self):
         """Remove accentuation."""
-        no_accentuation = unidecode.unidecode(self.no_punctuation)
-        self.question_cleaned = no_accentuation.split()
+        no_accentuation = unidecode.unidecode(self._no_punctuation)
+        return no_accentuation
     
+    def _clean(self):
+        question_cleaned = self._no_accentuation.split()
+        return question_cleaned
