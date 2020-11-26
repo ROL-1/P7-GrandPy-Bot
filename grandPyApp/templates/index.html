@@ -15,35 +15,10 @@
 	<!-- Dialog 
 		=========================================================================== -->		
 	<div class="jumbotron row col-md-6" id="dialog">		
-		<ul class="messages"></ul><!-- Empty list waiting for input-->
+		<div class="messages"></div><!-- Empty div waiting for input-->
 		<img class="pull-left" id="loading_gif" src={{ url_for('static', filename='img/loading.gif') }} alt="Loading gif">
 	</div>
-
-	<!-- Message template 
-	=========================================================================== -->	
-	<div id="message_template">
-		<li>
-			<ul class="answer">
-				<li class="dialog_question">
-					<div class="text_wrapper1">
-						<div class="text1"></div>
-					</div>
-				</li>
-				<li class="dialog_adress">
-					<div class="avatar"><img class="miniBot" src='static/img/GrandPiBotte_Mini.png' alt='miniBot' /></div>
-					<div class="text_wrapper2">
-						<div class="text2"></div>
-					</div>
-				</li>
-				<li class="dialog_wiki">
-					<div class="avatar"><img class="miniBot" src='static/img/GrandPiBotte_Mini.png' alt='miniBot' /></div>
-					<div class="text_wrapper3">
-						<div class="text3"></div>
-					</div>
-				</li>
-			</ul>
-		</li> 
-	</div>
+	{% block template %}{% endblock %}
 
 	<!-- Map
 	=========================================================================== -->				

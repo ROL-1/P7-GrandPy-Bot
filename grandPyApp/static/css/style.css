@@ -86,7 +86,7 @@ a:hover{
 	background-color: rgb(248, 224, 179);
 	border-radius: 10px;
 	margin-bottom:15px;
-	  border: 2px solid rgb(247, 164, 0);;
+	border: 2px solid rgb(247, 164, 0);;
 }
 
 .text_wrapper2 {
@@ -147,8 +147,4 @@ a:hover{
 }
 li{
 	list-style: none;
-}
-.answer{
-	margin-right: 20px;
-	margin-bottom: 40px;
 }

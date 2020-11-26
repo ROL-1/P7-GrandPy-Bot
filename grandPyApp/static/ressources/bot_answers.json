@@ -3,6 +3,7 @@
     "BOT_EMPTY_WIKI" : "... en fait, ça ne me rapelle rien.",
     "BOT_UNKNOW_ADRESS" : " inconnue pour moi.",
     "BOT_FAIL_GEO" : "inconnue. Hélas, Geocoding ne propose pas de résultat ; code d'erreur : ",
+    "BOT_FAIL_GEO_WIKI" : "Hélas, Geocoding ne propose pas de résultat, MediaWiki n'a donc pas été sollicité.",
     "BOT_FAIL_WIKI" : "hélas, MediaWiki ne propose pas de résultat code d'erreur : ",
     "BOT_NO_RESULT" : " j'ai besoin que vous reformuliez votre question, s'il vous plait."
 }

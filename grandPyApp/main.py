@@ -21,7 +21,7 @@ class Main:
         self.parse(question_send)
         self.interpreter()
         self.geo()
-        self.wiki()
+
 
     def parse(self, question_send):
         """Call parse.py.
@@ -46,31 +46,36 @@ class Main:
         Out : geo_adress_results (string) : sucess or fail message to display to user ;
               geo_coord_results (list) : coordinates for the map.
         """
+        # Boolean for css display red border
         self.geo_fail = True
+        coord_fail = False
         #  Call geocoding.py to make a request to Geocoding (Mapbox) API
-        g = Geocoding(self.parsed_string).geocoding_results
+        g = Geocoding(self.parsed_string)
         # Check if there is a response
-        if g.status_code == 200:
+        if g.response.status_code == 200:
             try:
-                print(g.json()['features'])
                 # Read the response, looking for coordinates
-                g_coord = g.json()['features'][0]['center']
+                g_coord = g.coord
                 # Check if there is the response is empty
                 if g_coord == '':
                     self.geo_coord_results = [0,0] # TC : A GERER ####
+                    coord_fail = True
                 else:
                     # Return good response
                     self.geo_coord_results = g_coord
+                    self.wiki()
             except KeyError as e:
                 if e.args[0] == 'features' :
                     self.geo_coord_results = [0,0] # TC : A GERER ####
+                    coord_fail = True
                 else:
                     raise # TC
-            except IndexError:           
+            except IndexError:
                 self.geo_coord_results = [0,0] # TC : A GERER ####
+                coord_fail = True
             try:
                 # Read the response, looking for adress
-                g_adress = g.json()['features'][0]['place_name']
+                g_adress = g.adress
                 # Check if there is the response is empty
                 if g_adress == '':
                     self.geo_adress_results = self.bot_answers['BOT_EMPTY_GEO']  # TC : A GERER ####
@@ -86,8 +91,13 @@ class Main:
             except IndexError:           
                 self.geo_adress_results = self.bot_answers['BOT_UNKNOW_ADRESS']
         else:
-            self.geo_adress_results =  self.bot_answers['BOT_FAIL_GEO']+str(g.status_code)
+            self.geo_adress_results =  self.bot_answers['BOT_FAIL_GEO']+str(g.response.status_code)
             self.geo_coord_results = [0,0]
+            coord_fail = True
+            # MediaWiki is not called
+        if coord_fail == True:
+            self.wiki_results = self.bot_answers['BOT_FAIL_GEO_WIKI']
+            self.wiki_fail = True
 
     def wiki(self):
         """Call wikipedia.py to make a request to MediaWiki (Wikipedia) API.
@@ -98,15 +108,12 @@ class Main:
         """
         self.wiki_fail = True
         #  Call wikipedia.py
-        w = WikiApi(self.parsed_string).wiki_results
+        w =  WikiApi(self.geo_coord_results)
         # Check if there is a response from 
-        if w.status_code == 200:
+        if w.response != int:
             try:
                 # Read the response, looking for adress
-                w_results = w.json()['query']['pages']
-                for k in w_results.keys():
-                    pageid = k                           
-                wiki_results = w_results[pageid]['extract']
+                wiki_results = w.response
                 # Check if there is the response is empty
                 if wiki_results == '':
                     self.wiki_results =  self.bot_answers['BOT_EMPTY_WIKI']
@@ -122,4 +129,4 @@ class Main:
             except IndexError:           
                 self.wiki_results = self.bot_answers['BOT_NO_RESULT']
         else:
-            self.wiki_results =  self.bot_answers['BOT_FAIL_WIKI']+str(w.status_code)
+            self.wiki_results =  self.bot_answers['BOT_FAIL_WIKI']+str(w.response)

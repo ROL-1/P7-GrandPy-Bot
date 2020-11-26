@@ -13,7 +13,7 @@ app = Flask(__name__) # name the WSGI application : "app"
 @app.route('/')
 def index():
     """Directs to index page."""
-    return render_template("index.html", ACCESS_TOKEN=MAPBOX_API_KEY) # TC
+    return render_template("template.html", ACCESS_TOKEN=MAPBOX_API_KEY) # TC
 
 @app.route('/api/getAnswer', methods = ['POST'])
 def getAnswer():

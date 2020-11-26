@@ -2,7 +2,7 @@ $(document).ready(function(){
 
   // Mapbox
   function mapbox(data) {
-    mapboxgl.accessToken = $ACCESS_TOKEN; // Heroku maj ?
+    mapboxgl.accessToken = $ACCESS_TOKEN; 
     var map = new mapboxgl.Map({
       container: 'mapbox',
       style: 'mapbox://styles/mapbox/streets-v11',
@@ -67,6 +67,8 @@ $(document).ready(function(){
   function postStart(){
     // Display loading gif
     $('#loading_gif').show(); 
+    // Scroll bottom to show loading gif
+    $('#dialog').scrollTop($('#dialog')[0].scrollHeight);
     // Hide fail_box
     $('#fail_box').hide();
     // Clean fail_text
@@ -94,8 +96,13 @@ $(document).ready(function(){
     $('#loading_gif').hide();  
   };
 
+  // Scroll bottom when resize
+  $(window).resize(function(){
+    $('#dialog').scrollTop($('#dialog')[0].scrollHeight);
+  });
+
   // Scrollspy smooth
-  $(function () {
+  $(function(){
     $('header a').on('click', function(e) {
       e.preventDefault();
       var hash = this.hash;

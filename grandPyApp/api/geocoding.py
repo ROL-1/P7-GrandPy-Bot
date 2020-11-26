@@ -22,11 +22,19 @@ class Geocoding:
             "country" : geocoding['COUNTRY'],
             "limit": geocoding['RESULTS_LIMIT']
         }
-        self.geocoding_results = self.get_Geocoding()
+        self.response = self.get_geocoding()
 
-    def get_Geocoding(self):
+    def get_geocoding(self):
         """Create and pass request for Geocoding API (MapBox)."""
-        request = requests.get(url=self.URL, params=self.PARAMS)
-        return request
+        response = requests.get(url=self.URL, params=self.PARAMS)
+        return response
 
-    # def adress():
+    @property
+    def coord(self):      
+        return  self.response.json()['features'][0]['center']
+
+    @property
+    def adress(self):       
+        return  self.response.json()['features'][0]['place_name']
+
+
