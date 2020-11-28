@@ -4,6 +4,8 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+docformatter = "*"
+black = "*"
 
 [packages]
 flask = "*"
@@ -11,6 +13,8 @@ requests = "*"
 pytest = "*"
 gunicorn = "*"
 unidecode = "*"
+autopep8 = "*"
+isort = "*"
 
 [requires]
 python_version = "3.8"

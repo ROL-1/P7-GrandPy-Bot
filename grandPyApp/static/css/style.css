@@ -8,6 +8,9 @@ footer {
 	margin-top: 20px;
 	padding-left: 30px;
 }
+li{
+	list-style: none;
+}
 /* Text and image formatting*/
 #home_title {
 	color:rgb(247, 164, 0);
@@ -81,61 +84,29 @@ a:hover{
 	margin-top:-10px;
 }
 
+.text {
+	margin: 0px 10px 0px 10px;
+  text-align: justify;
+}
+
 .text_wrapper1 {
 	background-color: rgb(248, 224, 179);
 	border-radius: 10px;
 	margin-bottom:15px;
 	border: 2px solid rgb(247, 164, 0);;
 }
-
-.text_wrapper2 {
+.text_wrapper_bot {
 	background-color:  rgb(201, 218, 195);
 	border-radius: 10px;
 	margin-bottom: 15px;
+}
+.wrapper_border_green {
   	border: 2px solid rgb(36, 128, 0);
 }
 
-.text_wrapper3 {
-	background-color:  rgb(201, 218, 195);
-	border-radius: 10px;
-	margin-bottom: 15px;
-  	border: 2px solid rgb(36, 128, 0);
+.wrapper_border_red {
+	border: 2px solid red;
 }
-
-.text_wrapper2r {
-	background-color:  rgb(201, 218, 195);
-	border-radius: 10px;
-	margin-bottom: 15px;
-  	border: 2px solid red;
-}
-
-.text_wrapper3r {
-	background-color:  rgb(201, 218, 195);
-	border-radius: 10px;
-	margin-bottom: 15px;
-  	border: 2px solid red;
-}
-
-.text_wrapper4 {
-	background-color:  rgb(201, 218, 195);
-	border-radius: 10px;
-	margin-bottom: 15px;
-  	border: 2px solid rgb(36, 128, 0);
-}
-.text {
-	margin: 0px 10px 0px 10px;
-  text-align: justify;
-}
-
-/* .text2 {
-	margin: 0px 10px 0px 10px;
-	text-align: justify;
-} */
-
-/* .text3 {
-	margin: 0px 10px 0px 10px;
-	text-align: justify;
-} */
 
 .avatar{
 	width: 29px;
@@ -149,7 +120,4 @@ a:hover{
 }
 .miniBot{
 	padding: 4px 0px 0px 3px;
-}
-li{
-	list-style: none;
 }

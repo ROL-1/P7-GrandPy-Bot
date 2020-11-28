@@ -1,8 +1,9 @@
-"""Cleaner file. """
+"""Cleaner file."""
+
+from string import punctuation
 
 import unidecode
 
-from string import punctuation
 
 class Cleaner:
     """Clean a string. Return a list.
@@ -28,7 +29,10 @@ class Cleaner:
     @property
     def _no_punctuation(self):
         """Remove puncutation."""
-        no_punctuation = ''.join([i if i not in punctuation else ' ' for i in self._uncapitalized_string])
+        no_punctuation = "".join(
+            [i if i not in punctuation
+             else " " for i in self._uncapitalized_string]
+        )
         return no_punctuation
 
     @property
@@ -36,7 +40,7 @@ class Cleaner:
         """Remove accentuation."""
         no_accentuation = unidecode.unidecode(self._no_punctuation)
         return no_accentuation
-    
+
     def _clean(self):
         question_cleaned = self._no_accentuation.split()
         return question_cleaned

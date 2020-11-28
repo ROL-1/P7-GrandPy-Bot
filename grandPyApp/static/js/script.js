@@ -17,19 +17,23 @@ $(document).ready(function(){
   // Fill "dialog" with input text and scroll down in div
   function insertDialog(data) {    
     let $list = $('.messages');
+    // Modify template
     $('#message_template .text1').html(data['answer']);
-    $('#message_template .text4').html(data['bonus_message']);
-    $('#message_template .text2').html("<b>L'adresse est : </b>" + data['geo_adress_results']);
-    $('#message_template .text3').html("<b>Saviez-vous que : </b>" + data['wiki_results']);
+    $('#message_template .text2').html(data['bonus_message']);
+    $('#message_template .text3').html("<b>L'adresse est : </b>" + data['geo_adress_results']);
+    $('#message_template .text4').html("<b>Saviez-vous que : </b>" + data['wiki_results']);
+    // If fail : change border color to red
     if (data['geo_fail'] === true)
-      $('#message_template .text_wrapper2').addClass('text_wrapper2r').removeClass('text_wrapper2');
+      $('#message_template .text_wrapper3').addClass('wrapper_border_red').removeClass('wrapper_border_green');
     if (data['wiki_fail'] === true)
-      $('#message_template .text_wrapper3').addClass('text_wrapper3r').removeClass('text_wrapper3');
+      $('#message_template .text_wrapper4').addClass('wrapper_border_red').removeClass('wrapper_border_green');
+    // Apply template
     $($('#message_template').clone().html()).appendTo($list);
+    // In dialog zone : scroll to bottom
     $('#dialog').scrollTop($('#dialog')[0].scrollHeight);
-    // Reset colors
-    $('#message_template .text_wrapper2r').addClass('text_wrapper2').removeClass('text_wrapper2r');
-    $('#message_template .text_wrapper3r').addClass('text_wrapper3').removeClass('text_wrapper3r');
+    // Reset borders colors
+    $('#message_template .text_wrapper3').addClass('wrapper_border_green').removeClass('wrapper_border_red');
+    $('#message_template .text_wrapper4').addClass('wrapper_border_green').removeClass('wrapper_border_red');
   };
 
   // Submit form on Enter key press

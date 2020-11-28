@@ -3,22 +3,24 @@
 import json
 import re
 
+
 class Interpreter:
     """Interprets useful words.
 
     In : parsed_string (string)
-    Act : compare les mots avec plusieurs listes de champs lexicaux pour identifier des réactions différentes à générer
+    Act : compare les mots avec plusieurs listes de champs lexicaux,
+          pour identifier des réactions différentes à générer
     Out : better_parsed_string et réactions : ???
     """
 
-    def __init__(self, parsed_string):  
+    def __init__(self, parsed_string):
         """Load question send by user."""
         self.reactions = {
-            "COURTESY":"False",
-            "HELLO":"False",
-            "HOW_ARE":"False",
-            "TIME":"False",
-            "TIME_UNIT":"False"
+            "COURTESY": "False",
+            "HELLO": "False",
+            "HOW_ARE": "False",
+            "TIME": "False",  # For upgrade
+            "TIME_UNIT": "False",  # For upgrade
         }
         self.reactlist = []
         self.parsed_string = parsed_string.split()
@@ -27,38 +29,32 @@ class Interpreter:
         self._edit_reactions()
 
     def _lexicals(self):
-        """Open and read "stopwords.json" file. Return a list."""
-        with open('grandPyApp/static/ressources/lexicals.json') as json_data:
+        """Open and read "stopwords.json" file.
+
+        Return a list.
+        """
+        with open("grandPyApp/static/ressources/lexicals.json") as json_data:
             self.lexicals = json.load(json_data)
 
     def _interpreter(self):
-        """Search words starting by."""        
-        trashlist = []        
+        """Search words starting by."""
+        trashlist = []
         for word in self.parsed_string:
             dic = self.lexicals
-            for k,v in dic.items():
-                for radical in v:             
-                    found = re.match(radical,word)
+            for k, v in dic.items():
+                for radical in v:
+                    found = re.match(radical, word)
                     if found:
                         self.reactlist.append(k)
                         trashlist.append(word)
-        better_words = ' '.join([x for x in self.parsed_string if x not in trashlist])
+        better_words = " ".join(
+            [x for x in self.parsed_string if x not in trashlist])
         return better_words
-    
+
     def _edit_reactions(self):
-        print(self.reactlist)
-        print("BEFORE self.reactions",self.reactions)
         for reaction in self.reactlist:
-            if reaction not in ['REJECT','LOCALISE']:
-                # if reaction == 'TIME_UNIT':
-                #     self.reactions['TIME_UNIT'] = reaction  # To upgrade
-                # else:
-                self.reactions[reaction] = 'True'
-        print("AFTER self.reactions",self.reactions)
-
-
-
-
+            if reaction not in ["REJECT", "LOCALISE"]:
+                self.reactions[reaction] = "True"
 
 
 # I = Interpreter("bonjour comment va tu grand py, donne moi heure et adresse du musée d'orsay s'il te plait")

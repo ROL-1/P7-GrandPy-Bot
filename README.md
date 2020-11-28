@@ -26,4 +26,3 @@ https://trello.com/b/HvdsLlAh/p7-grandpy-bot
 
 ## Lien vers l'application hébergée sur Heroku :
 https://grand-py.herokuapp.com/
-

@@ -1,8 +1,8 @@
 {
-    "COURTESY":["^plait","^merci","^prie"],
-    "HELLO" : ["^bonjou","^salu","^hello"],
-    "HOW_ARE" : ["^comm"],
-    "LOCALISE" : ["^adres","^indiqu","^situ","^localis","^trouv","^degot","^procur","^donn","^cherch","^obten","^recuper"],
+    "COURTESY":["^merci","^plait","^prie"],
+    "HELLO" : ["^bonjou","^bonsoi","^hello","^salu"],
+    "HOW_ARE" : ["^comm","^passe"],
+    "LOCALISE" : ["^adres","^cherch","^degot","^donn","^indiqu","^localis","^obten","^procur","^recuper","^situ","^trouv"],
     "REJECT": ["^grandpy","^py"],
     "TIME":["^heur"],
     "TIME_UNIT":["^journ","^semain","^week"]
