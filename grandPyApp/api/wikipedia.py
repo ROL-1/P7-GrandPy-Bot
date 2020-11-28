@@ -31,7 +31,7 @@ class WikiApi:
             "action": "query",
             "list": "geosearch",
             "gscoord": f"{lat}|{long}",
-            "gsradius": 1000,
+            "gsradius": 10000,
             "gslimit": 1,
             "format": "json",
         }
