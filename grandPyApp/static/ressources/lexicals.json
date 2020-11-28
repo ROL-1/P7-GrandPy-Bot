@@ -1,4 +1,9 @@
 {
+    "COURTESY":["^plait","^merci","^prie"],
+    "HELLO" : ["^bonjou","^salu","^hello"],
+    "HOW_ARE" : ["^comm"],
     "LOCALISE" : ["^adres","^indiqu","^situ","^localis","^trouv","^degot","^procur","^donn","^cherch","^obten","^recuper"],
-
+    "REJECT": ["^grandpy","^py"],
+    "TIME":["^heur"],
+    "TIME_UNIT":["^journ","^semain","^week"]
 }

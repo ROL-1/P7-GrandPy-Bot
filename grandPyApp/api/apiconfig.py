@@ -10,7 +10,7 @@ geocoding = {
 ### wikipedia.py ###
 wikipedia = {
 "URL" : "https://fr.wikipedia.org/w/api.php",
-"SENTENCES_LIMIT" : "3",
+"SENTENCES_LIMIT" : "2",
 "RESULTS_LIMIT" : "1",
 }
 

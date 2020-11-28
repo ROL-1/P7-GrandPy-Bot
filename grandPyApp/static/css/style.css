@@ -77,7 +77,6 @@ a:hover{
 
 .messages {
 	position: relative;
-	/* list-style: none; */
 	padding: 20px 10px 0 10px;
 	margin-top:-10px;
 }
@@ -117,20 +116,26 @@ a:hover{
   	border: 2px solid red;
 }
 
-.text1 {
+.text_wrapper4 {
+	background-color:  rgb(201, 218, 195);
+	border-radius: 10px;
+	margin-bottom: 15px;
+  	border: 2px solid rgb(36, 128, 0);
+}
+.text {
 	margin: 0px 10px 0px 10px;
   text-align: justify;
 }
 
-.text2 {
+/* .text2 {
 	margin: 0px 10px 0px 10px;
 	text-align: justify;
-}
+} */
 
-.text3 {
+/* .text3 {
 	margin: 0px 10px 0px 10px;
 	text-align: justify;
-}
+} */
 
 .avatar{
 	width: 29px;

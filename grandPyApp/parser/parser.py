@@ -26,10 +26,16 @@ class Parser:
         return stopwords_list
 
     @property
+    def _reject(self):
+        """Open and read "stopwords.json" file. Return a list."""
+        with open('grandPyApp/static/ressources/lexicals.json') as json_data:
+            _reject = json.load(json_data)["REJECT"]
+        return _reject
+
+    @property
     def _unwanted_words(self):
         """Extend stopwords_list with personals words. Return a list."""
-        new_words = ['salut','bonjour','grandpy','py','plait','plaît'] #TC - MOVE TO CONFIG
-        unwanted_words_list = self._stopwords + new_words
+        unwanted_words_list = self._stopwords + self._reject
         return unwanted_words_list
 
     @property

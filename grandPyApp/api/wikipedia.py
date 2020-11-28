@@ -14,15 +14,16 @@ class WikiApi:
     """Search a localisation with Mediawiki API."""
 
     def __init__(self, geo_coord_results):
-        """Define parameters to create endpoint."""          
+        """Define parameters to create endpoint.""" 
         self.URL = wikipedia['URL']
         self.geo_coord_results = geo_coord_results
-        self.coordsearch()
+
 
     def get_wikipedia(self,params):
         response =  requests.get(url=self.URL, params=params)
         return response
 
+    @property
     def coordsearch(self):
         """Create and pass request for Wiki Media Api."""
         long = self.geo_coord_results[0]
@@ -31,20 +32,19 @@ class WikiApi:
             "action": "query",
             "list": "geosearch",
             "gscoord": f"{lat}|{long}",
-            "gsradius": 1000,
+            "gsradius": 10,
             "gslimit": 1,
             "format": "json"
         }
         response = self.get_wikipedia(params)
-        if response.status_code == 200:
-            self.pageid = response.json()['query']['geosearch'][0]['pageid']
-            self.extract        
-        else:
-            self.response = response.status_code
-            return self.response
+        return response
     
+    def pageid(self, coordsearch_response):
+        """"""
+        self.pageid = coordsearch_response.json()['query']['geosearch'][0]['pageid']
+
     @property
-    def extract(self):
+    def pagewiki(self):
         """"""
         params = {
             "pageids": self.pageid,
@@ -55,12 +55,13 @@ class WikiApi:
             "format": "json",
             "exsentences": wikipedia['SENTENCES_LIMIT'],
         }
+        
         response = self.get_wikipedia(params)
-        if response.status_code == 200:
-            self.response = response.json()['query']['pages'][str(self.pageid)]['extract']
-            return self.response
-        else:
-            self.response = response.status_code
-            return self.response
+        return response
+
+    def extract(self, pagewiki_response):
+        """"""
+        self.extract = pagewiki_response.json()['query']['pages'][str(self.pageid)]['extract']
+        print(self.extract)
 
 

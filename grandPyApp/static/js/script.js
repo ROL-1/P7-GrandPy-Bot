@@ -18,6 +18,7 @@ $(document).ready(function(){
   function insertDialog(data) {    
     let $list = $('.messages');
     $('#message_template .text1').html(data['answer']);
+    $('#message_template .text4').html(data['bonus_message']);
     $('#message_template .text2').html("<b>L'adresse est : </b>" + data['geo_adress_results']);
     $('#message_template .text3').html("<b>Saviez-vous que : </b>" + data['wiki_results']);
     if (data['geo_fail'] === true)
@@ -91,7 +92,7 @@ $(document).ready(function(){
   function postFail(){
     // Display fail box and add message.
     $('#fail_box').show("slow");
-    $('#fail_text').append('Requête échouée !'); 
+    $('#fail_text').append('Requête échouée !'); // TC
     // Hide loading gif
     $('#loading_gif').hide();  
   };

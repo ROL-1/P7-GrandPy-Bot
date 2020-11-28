@@ -30,6 +30,7 @@ def getAnswer():
     
     out = jsonify({
         'answer' : question_send,
+        'bonus_message' : response.bonus_message,
         'geo_coord_results' : response.geo_coord_results,
         'geo_adress_results' : response.geo_adress_results,
         'wiki_results' : response.wiki_results,
