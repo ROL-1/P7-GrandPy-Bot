@@ -1,4 +1,9 @@
-# Créez GrandPy Bot, le papy-robot 
+# GrandPy Bot, le papy-robot 
+Il s'agit d'un projet d'apprentissage.
+Projet 7 du parcours développeur d'application d'Openclassrooms
+https://openclassrooms.com/fr/paths/322-developpeur-dapplication-python
+
+-----------------
 ## Cahier des charges
 ### Fonctionnalités
 
@@ -21,8 +26,55 @@ Puis un nouveau message apparaît : "Bien sûr mon poussin ! La voici : 7 cité 
 
 GrandPy envoie un nouveau message : "Mais t'ai-je déjà raconté l'histoire de ce quartier qui m'a vu en culottes courtes ? La cité Paradis est une voie publique située dans le 10e arrondissement de Paris. Elle est en forme de té, une branche débouche au 43 rue de Paradis, la deuxième au 57 rue d'Hauteville et la troisième en impasse.
 
+-----------------
+## Utilisation
+Posez votre question en demandant une adresse, dans le formulaire prévu à cet effet, et le bot vous répondra.
+
+(Le programme est configuré pour la France, ceci peut être changé dans 
+grandPyApp/api/apiconfig.py 
+en retirant la ligne : "COUNTRY": "fr" ou en choissant un autre pays.)
+
+## Logiciels, librairies, APIs
+- Python 3.8
+- Flask
+- Ajax (JQuery)
+- HTML 5
+- CSS 3
+- Bootstrap
+- PaaS Heroku (WSGI : Gunicorn)
+- APIs :
+    * Geocoding (Mapbox) 
+    https://docs.mapbox.com/
+
+    * Media wiki (Wikipedia) 
+    https://www.mediawiki.org/wiki/MediaWiki
+- Pytest
+
+## Lien direct vers l'application hébergée sur Heroku :
+https://grand-py.herokuapp.com/
+
+## Ou : installation et lancement
+- Installation :
+    * clone
+    * `pipenv install`
+    * `pipenv shell`
+    * `pipenv install -r requirements.txt`
+    * modifier le fichier settings.py pour y ajouter votre clef privée pour l'api Mapbox.
+
+- Lancement :
+    * py run.py
+
+Le site sera accessible par défaut à l'adresse : 
+http://127.0.0.1:5000/
+
+## Deployer sur heroku
+Il est nécessaire d'avoir un compte heroku et d'y définir ce projet comme nouveau projet heroku.
+Puis passer la commande :
+- `git push heroku`
+
+-----------------
 ## Lien vers le Trello :
 https://trello.com/b/HvdsLlAh/p7-grandpy-bot
 
-## Lien vers l'application hébergée sur Heroku :
-https://grand-py.herokuapp.com/
+
+
