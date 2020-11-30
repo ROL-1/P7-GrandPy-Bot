@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a83226d319cff431de2a92a9cf8f925e5b48bf3ff6cca74ec1e4126f7725bc75"
+            "sha256": "b51a5879bac03777f2a991a4b5bec75aa09a3e406655d245b1a314739b83945d"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -196,6 +196,22 @@
             "index": "pypi",
             "version": "==2.25.0"
         },
+        "requests-mock": {
+            "hashes": [
+                "sha256:11215c6f4df72702aa357f205cf1e537cffd7392b3e787b58239bde5fb3db53b",
+                "sha256:e68f46844e4cee9d447150343c9ae875f99fa8037c6dcf5f15bf1fe9ab43d226"
+            ],
+            "index": "pypi",
+            "version": "==1.8.0"
+        },
+        "six": {
+            "hashes": [
+                "sha256:30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259",
+                "sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+            "version": "==1.15.0"
+        },
         "toml": {
             "hashes": [
                 "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b",
@@ -229,19 +245,5 @@
             "version": "==1.0.1"
         }
     },
-    "develop": {
-        "docformatter": {
-            "hashes": [
-                "sha256:d8db663665becccac75737b2635a06076f2c832bf861322a7bfc512f0a9fa7e3"
-            ],
-            "index": "pypi",
-            "version": "==1.3.1"
-        },
-        "untokenize": {
-            "hashes": [
-                "sha256:3865dbbbb8efb4bb5eaa72f1be7f3e0be00ea8b7f125c69cbd1f5fda926f37a2"
-            ],
-            "version": "==0.1.1"
-        }
-    }
+    "develop": {}
 }

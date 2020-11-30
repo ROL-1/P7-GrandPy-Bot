@@ -6,7 +6,7 @@
 	================================================================================ -->
 	<div class="jumbotron row" id="logo">
 		<h1 class="text-center" id="home_title">GrandPy Bot</h1>				
-		<img id="GrandPiBotte" src={{ url_for('static', filename='img/GrandPiBotte.png') }} alt="GrandPiBotte">
+		<img id="GrandPiBotte" src="{{ url_for('static', filename='img/GrandPiBotte.png') }}" alt="GrandPiBotte">
 		<h2 class="text-center" id="teaser">"GrandPy Bot : ça me botte !"</h2>
 		<p class="text-justify">Le GrandPy Bot, peut trouver n'importe quel endroit. Demandez lui de trouver une adresse et il la trouvera ! Il se peut même qu'il ait une petite histoire à raconter à son propos.</p>
 	</div>
@@ -16,7 +16,7 @@
 		=========================================================================== -->		
 	<div class="jumbotron row col-md-6" id="dialog">		
 		<div class="messages"></div><!-- Empty div waiting for input-->
-		<img class="pull-left" id="loading_gif" src={{ url_for('static', filename='img/loading.gif') }} alt="Loading gif">
+		<img class="pull-left" id="loading_gif" src="{{ url_for('static', filename='img/loading.gif') }}" alt="Loading gif">
 	</div>
 	{% block template %}{% endblock %}
 

@@ -26,18 +26,19 @@ class Main:
         if self.parsed_string != "":
             self.geo()
         else:
-            self.geo_failed(self.bot_answers["BOT_NO_WORD"])
+            self.geo_failed(self.bot_answers["NO_WORD"])
         # Call wikipedia only if geocoding have not failed
         if self.geo_fail is False:
             self.wiki()
 
     def geo_failed(self, geo_fail_message):
+        """Reaction if geocoding module fail."""
         self.geo_adress_results = geo_fail_message
         self.geo_coord_results = [0, 0]
         # Boolean for css display red border
         self.geo_fail = True
         # MediaWiki is not called
-        self.wiki_results = self.bot_answers["BOT_FAIL_GEO_WIKI"]
+        self.wiki_results = self.bot_answers["FAIL_GEO_WIKI"]
         self.wiki_fail = True
 
     def wiki_failed(self, wiki_fail_message):
@@ -58,7 +59,6 @@ class Main:
         """"""
         i = Interpreter(self.parsed_string)
         self.parsed_string = i.better_words
-        print("####parsed_string####", self.parsed_string)
         r = Reactions(i.reactions)
         self.bonus_message = " ".join(r.bonus_message)
 
@@ -80,7 +80,7 @@ class Main:
                 g_coord = g.coord
                 # Check if there is the response is empty
                 if g_coord == "":
-                    self.geo_failed(self.bot_answers["BOT_EMPTY_GEO"])
+                    self.geo_failed(self.bot_answers["EMPTY_GEO"])
                 else:
                     # Return good response
                     self.geo_coord_results = g_coord
@@ -89,17 +89,25 @@ class Main:
                         g_adress = g.adress
                         # Check if there is the response is empty
                         if g_adress == "":
-                            self.geo_failed(self.bot_answers["BOT_EMPTY_GEO"])
+                            self.geo_failed(self.bot_answers["EMPTY_GEO"])
                         else:
                             # Return good response
                             self.geo_adress_results = g_adress
                             self.geo_fail = False
                     except (KeyError, IndexError):
-                        self.geo_failed(self.bot_answers["BOT_UNKNOW_ADRESS"])
+                        self.geo_failed(self.bot_answers["UNKNOW_ADRESS"])
             except (KeyError, IndexError):
-                self.geo_failed(self.bot_answers["BOT_UNKNOW_ADRESS"])
+                self.geo_failed(self.bot_answers["UNKNOW_ADRESS"])
         else:
-            self.geo_failed(self.bot_answers["BOT_FAIL_GEO"])
+            if g.response.status_code == 401:
+                self.geo_failed(
+                    self.bot_answers["FAIL_GEO_AUTHORIZATION"]
+                    + str(g.response.status_code)
+                )
+            else:
+                self.geo_failed(
+                    self.bot_answers["FAIL_GEO"] + str(g.response.status_code)
+                )
 
     def wiki(self):
         """Call wikipedia.py to make a request to MediaWiki (Wikipedia) API.
@@ -112,7 +120,7 @@ class Main:
         try:
             coordsearch = w.coordsearch
             if coordsearch.status_code == 200:
-                w.pageid(coordsearch)  # TC
+                w.pageid(coordsearch)
                 try:
                     pagewiki = w.pagewiki
                     if pagewiki.status_code == 200:
@@ -120,17 +128,16 @@ class Main:
                         wiki_results = w.infos
                         # Verify if extract field is empty
                         if wiki_results == "":
-                            self.wiki_failed(
-                             self.bot_answers["BOT_EMPTY_WIKI"])
+                            self.wiki_failed(self.bot_answers["EMPTY_WIKI"])
                         else:
                             # Return good response
                             self.wiki_results = wiki_results
                             self.wiki_fail = False
                     else:
-                        self.wiki_failed(self.bot_answers["BOT_FAIL_WIKI"])
+                        self.wiki_failed(self.bot_answers["FAIL_WIKI"])
                 except (KeyError, IndexError):
-                    self.wiki_failed(self.bot_answers["BOT_NO_RESULT"])
+                    self.wiki_failed(self.bot_answers["NO_RESULT"])
             else:
-                self.wiki_failed(self.bot_answers["BOT_NO_RESULT"])
+                self.wiki_failed(self.bot_answers["NO_RESULT"])
         except (KeyError, IndexError):
-            self.wiki_failed(self.bot_answers["BOT_FAIL_WIKI"])
+            self.wiki_failed(self.bot_answers["FAIL_WIKI"])

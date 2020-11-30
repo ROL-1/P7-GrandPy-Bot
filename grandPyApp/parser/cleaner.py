@@ -16,9 +16,9 @@ class Cleaner:
     """
 
     def __init__(self, question_send):
-        """Laucnh functions."""
+        """Launch function clean."""
         self.question_send = question_send
-        self.question_cleaned = self._clean()
+        self.question_cleaned = self._split()
 
     @property
     def _uncapitalized_string(self):
@@ -30,8 +30,7 @@ class Cleaner:
     def _no_punctuation(self):
         """Remove puncutation."""
         no_punctuation = "".join(
-            [i if i not in punctuation
-             else " " for i in self._uncapitalized_string]
+            [i if i not in punctuation else " " for i in self._uncapitalized_string]
         )
         return no_punctuation
 
@@ -41,6 +40,6 @@ class Cleaner:
         no_accentuation = unidecode.unidecode(self._no_punctuation)
         return no_accentuation
 
-    def _clean(self):
+    def _split(self):
         question_cleaned = self._no_accentuation.split()
         return question_cleaned

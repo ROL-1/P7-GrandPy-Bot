@@ -36,7 +36,6 @@ class WikiApi:
             "format": "json",
         }
         response = self.get_wikipedia(params)
-        print("wikicoordsearch", response.json())
         return response
 
     def pageid(self, coordsearch):
@@ -61,5 +60,4 @@ class WikiApi:
 
     def extract(self, pagewiki):
         """"""
-        self.infos = \
-            pagewiki.json()["query"]["pages"][str(self.page)]["extract"]
+        self.infos = pagewiki.json()["query"]["pages"][str(self.page)]["extract"]

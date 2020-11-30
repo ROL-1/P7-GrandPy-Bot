@@ -8,9 +8,9 @@ class Interpreter:
     """Interprets useful words.
 
     In : parsed_string (string)
-    Act : compare les mots avec plusieurs listes de champs lexicaux,
-          pour identifier des réactions différentes à générer
-    Out : better_parsed_string et réactions : ???
+    Act :  compares words with several lists of lexical fields,
+          to identify different reactions to be generated.
+    Out : list of key words for each expected reaction.
     """
 
     def __init__(self, parsed_string):
@@ -19,8 +19,8 @@ class Interpreter:
             "COURTESY": "False",
             "HELLO": "False",
             "HOW_ARE": "False",
-            "TIME": "False",  # For upgrade
-            "TIME_UNIT": "False",  # For upgrade
+            "TIME": "False",  # For next feature
+            "TIME_UNIT": "False",  # For next feature
         }
         self.reactlist = []
         self.parsed_string = parsed_string.split()
@@ -31,13 +31,17 @@ class Interpreter:
     def _lexicals(self):
         """Open and read "stopwords.json" file.
 
-        Return a list.
+        create a variable "lexicals" (type 'list').
         """
         with open("grandPyApp/static/ressources/lexicals.json") as json_data:
             self.lexicals = json.load(json_data)
 
     def _interpreter(self):
-        """Search words starting by."""
+        """Inspect parsed_string looking for words starting by expected
+        radicals.
+
+        Return a "better_words" list without them.
+        """
         trashlist = []
         for word in self.parsed_string:
             dic = self.lexicals
@@ -47,20 +51,14 @@ class Interpreter:
                     if found:
                         self.reactlist.append(k)
                         trashlist.append(word)
-        better_words = " ".join(
-            [x for x in self.parsed_string if x not in trashlist])
+        better_words = " ".join([x for x in self.parsed_string if x not in trashlist])
         return better_words
 
     def _edit_reactions(self):
+        """Edit 'reactions' dict,
+
+        change values "True" if key is in 'reactlist'
+        """
         for reaction in self.reactlist:
             if reaction not in ["REJECT", "LOCALISE"]:
                 self.reactions[reaction] = "True"
-
-
-# I = Interpreter("bonjour comment va tu grand py, donne moi heure et adresse du musée d'orsay s'il te plait")
-
-# "Salut grandpy! Comment s'est passé ta soirée avec Grandma hier soir? Au fait, pendant que j'y pense, pourrais-tu m'indiquer où se trouve le musée d'art et d'histoire de Fribourg, s'il te plaît?".
-# "Bonsoir Grandpy, j'espère que tu as passé une belle semaine. Est-ce que tu pourrais m'indiquer l'adresse de la tour eiffel? Merci d'avance et salutations à Mamie."
-
-# champs lexicaux sans applications : juste détection et renvoyer message : revenir pour la v2
-# séparer par punctuation terminale ?

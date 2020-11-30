@@ -20,7 +20,7 @@ class Geocoding:
         self.URL = geocoding["URL"] + search_terms
         self.PARAMS = {
             "access_token": MAPBOX_API_KEY,
-            # "country" : geocoding['COUNTRY'],
+            "country": geocoding["COUNTRY"],
             "limit": geocoding["RESULTS_LIMIT"],
         }
         self.response = self.get_geocoding()
@@ -32,8 +32,10 @@ class Geocoding:
 
     @property
     def coord(self):
+        """Return coordinates."""
         return self.response.json()["features"][0]["center"]
 
     @property
     def adress(self):
+        """Return adress."""
         return self.response.json()["features"][0]["place_name"]

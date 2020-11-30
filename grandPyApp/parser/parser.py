@@ -20,7 +20,7 @@ class Parser:
     def __init__(self, question_send):
         """Load question send by user."""
         self.question_cleaned = Cleaner(question_send).question_cleaned
-        self.parsed_string = self._parse()
+        self.parsed_string = self._string()
 
     @property
     def _stopwords(self):
@@ -61,10 +61,7 @@ class Parser:
                 useful_words_list.append(word)
         return useful_words_list
 
-    def _parse(self):
+    def _string(self):
         """Create "parsed _string" with only useful words."""
         parsed_string = (" ").join(self._useful_words)
         return parsed_string
-
-
-# a = Parser("Salut grandpy! Comment s'est passé ta soirée avec Grandma hier soir? Au fait, pendant que j'y pense, pourrais-tu m'indiquer où se trouve le musée d'art et d'histoire de Fribourg, s'il te plaît?")

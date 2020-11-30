@@ -4,7 +4,6 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-docformatter = "*"
 
 [packages]
 flask = "*"
@@ -12,6 +11,7 @@ requests = "*"
 pytest = "*"
 gunicorn = "*"
 unidecode = "*"
+requests-mock = "*"
 
 [requires]
 python_version = "3.8"

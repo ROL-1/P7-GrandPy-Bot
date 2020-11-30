@@ -3,7 +3,7 @@
 # geocoding.py
 geocoding = {
     "URL": "https://api.mapbox.com/geocoding/v5/mapbox.places/",
-    #  "COUNTRY" : "fr",
+    "COUNTRY": "fr",
     "RESULTS_LIMIT": "1",
 }
 

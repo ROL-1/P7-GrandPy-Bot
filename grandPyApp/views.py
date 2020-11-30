@@ -29,8 +29,6 @@ def getAnswer():
 
     response = Main(question_send)
 
-    print("\nin : ", question_send)  # TC
-
     out = jsonify(
         {
             "answer": question_send,
@@ -42,7 +40,5 @@ def getAnswer():
             "wiki_fail": response.wiki_fail,
         }
     )
-
-    print("out : ", out)  # TC
 
     return out
