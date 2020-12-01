@@ -19,12 +19,13 @@ class WikiApi:
         self.geo_coord_results = geo_coord_results
 
     def get_wikipedia(self, params):
+        """Create a request."""
         response = requests.get(url=self.URL, params=params)
         return response
 
     @property
     def coordsearch(self):
-        """Create and pass request for Wiki Media Api."""
+        """Create request for Wiki Media Api to search pageid."""
         long = self.geo_coord_results[0]
         lat = self.geo_coord_results[1]
         params = {
@@ -44,7 +45,7 @@ class WikiApi:
 
     @property
     def pagewiki(self):
-        """"""
+        """Create request for Wiki Media Api to open pageid."""
         params = {
             "pageids": self.page,
             "action": "query",
@@ -60,4 +61,5 @@ class WikiApi:
 
     def extract(self, pagewiki):
         """"""
-        self.infos = pagewiki.json()["query"]["pages"][str(self.page)]["extract"]
+        self.infos = \
+            pagewiki.json()["query"]["pages"][str(self.page)]["extract"]

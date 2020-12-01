@@ -10,7 +10,8 @@ class TestParser:
     def setup_class(self):
         """"""
         self.question_send = (
-            "Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?"
+            "Salut GrandPy ! Est-ce que tu connais \
+                l'adresse d'OpenClassrooms ?"
         )
 
     def test_Parser(self):

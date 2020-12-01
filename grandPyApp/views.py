@@ -2,14 +2,13 @@
 
 Defines the 'views' for each 'routes'.
 """
-import os
 
 from flask import Flask, jsonify, render_template, request
 
 from .main import Main
 from .settings import MAPBOX_API_KEY
 
-app = Flask(__name__)  # name the WSGI application : "app"
+app = Flask(__name__)
 
 
 @app.route("/")
@@ -20,7 +19,8 @@ def index():
 
 @app.route("/api/getAnswer", methods=["POST"])
 def getAnswer():
-    """
+    """From Post request, call main class and return results.
+
     In : user question (string)
     Act : Send it to main class.
     Out : Return results (in json).
@@ -28,6 +28,8 @@ def getAnswer():
     question_send = request.form["question"]
 
     response = Main(question_send)
+
+    print(response.bonus_message)
 
     out = jsonify(
         {
@@ -40,5 +42,4 @@ def getAnswer():
             "wiki_fail": response.wiki_fail,
         }
     )
-
     return out

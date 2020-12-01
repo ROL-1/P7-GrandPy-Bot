@@ -14,13 +14,18 @@ class Main:
 
     def __init__(self, question_send):
         """Load bot answers from bot_answers.json and call functions."""
-        with open("grandPyApp/static/ressources/bot_answers.json") as data:
+        with open(
+            "grandPyApp/static/ressources/bot_answers.json",
+            "r", encoding="utf-8"
+        ) as data:
             self.bot_answers = json.load(data)
         self.main(question_send)
 
     def main(self, question_send):
         """Launch functions for class : Main."""
+        # Clean and parse the question
         self.parse(question_send)
+        # Analyse the words selected
         self.interpreter()
         # Launch searches if parsed_string is not empty
         if self.parsed_string != "":
@@ -74,7 +79,7 @@ class Main:
         #  Call geocoding.py to make a request to Geocoding (Mapbox) API
         g = Geocoding(self.parsed_string)
         # Check if there is a response
-        if g.response.status_code == 200:
+        if g.status_code == 200:
             try:
                 # Read the response, looking for coordinates
                 g_coord = g.coord
@@ -99,15 +104,11 @@ class Main:
             except (KeyError, IndexError):
                 self.geo_failed(self.bot_answers["UNKNOW_ADRESS"])
         else:
-            if g.response.status_code == 401:
-                self.geo_failed(
-                    self.bot_answers["FAIL_GEO_AUTHORIZATION"]
-                    + str(g.response.status_code)
-                )
+            if g.status_code == 401:
+                self.geo_failed(self.bot_answers["FAIL_GEO_AUTHORIZATION"])
             else:
-                self.geo_failed(
-                    self.bot_answers["FAIL_GEO"] + str(g.response.status_code)
-                )
+                self.geo_failed(self.bot_answers["FAIL_GEO"]
+                                + str(g.status_code))
 
     def wiki(self):
         """Call wikipedia.py to make a request to MediaWiki (Wikipedia) API.

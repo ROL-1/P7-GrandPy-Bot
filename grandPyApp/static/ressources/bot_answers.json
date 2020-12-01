@@ -3,7 +3,7 @@
     "EMPTY_WIKI" : "... en fait, ça ne me rapelle rien.",
     "UNKNOW_ADRESS" : " inconnue pour moi.",
     "FAIL_GEO" : " inconnue. Hélas, Geocoding ne propose pas de résultat. Code d'erreur : ",
-    "FAIL_GEO_AUTHORIZATION" : " inconnue. Hélas, Géocoding refuse l'accès. Veuillez vérifier d'avoir bien renseigné la clef de l'api Mapbox dans settings.py ; code d'erreur : ",
+    "FAIL_GEO_AUTHORIZATION" : " inconnue. Hélas, Géocoding refuse l'accès. Veuillez vérifier d'avoir bien renseigné la clef de l'api Mapbox dans settings.py ; code d'erreur : 401",
     "FAIL_GEO_WIKI" : " hélas, Geocoding ne propose pas de résultat, MediaWiki n'a donc pas été sollicité.",
     "FAIL_WIKI" : " hélas, MediaWiki ne propose pas de résultat.",
     "NO_RESULT" : "... je n'en sais rien. Pouvez-vous, reformuler votre question, s'il vous plait.",

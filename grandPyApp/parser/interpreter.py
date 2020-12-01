@@ -51,7 +51,8 @@ class Interpreter:
                     if found:
                         self.reactlist.append(k)
                         trashlist.append(word)
-        better_words = " ".join([x for x in self.parsed_string if x not in trashlist])
+        better_words = \
+            " ".join([x for x in self.parsed_string if x not in trashlist])
         return better_words
 
     def _edit_reactions(self):

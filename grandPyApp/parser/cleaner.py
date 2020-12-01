@@ -21,16 +21,16 @@ class Cleaner:
         self.question_cleaned = self._split()
 
     @property
-    def _uncapitalized_string(self):
+    def _uncapitalized(self):
         """Uncapitalize string."""
-        uncapitalized_string = self.question_send.lower()
-        return uncapitalized_string
+        uncapitalized = self.question_send.lower()
+        return uncapitalized
 
     @property
     def _no_punctuation(self):
         """Remove puncutation."""
         no_punctuation = "".join(
-            [i if i not in punctuation else " " for i in self._uncapitalized_string]
+            [i if i not in punctuation else " " for i in self._uncapitalized]
         )
         return no_punctuation
 

@@ -12,9 +12,11 @@ class TestMain:
         parsed_string = "mairie paris"
         geo_coord_results = [2.402692, 48.88214]
         geo_adress_results = (
-            "Mairie, 84 Rue André Joineau, Le Pré-Saint-Gervais, Paris 93310, France"
+         "Mairie, 84 Rue André Joineau, Le Pré-Saint-Gervais, Paris 93310, \
+             France"
         )
-        wiki_results = "Le regard du Bernage est un regard, situé à Paris, en France."
+        wiki_results = "Le regard du Bernage est un regard, situé à Paris, \
+            en France."
         M = Main(question_send)
         assert M.parsed_string == parsed_string
         assert M.geo_coord_results == geo_coord_results

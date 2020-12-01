@@ -17,7 +17,10 @@ class Reactions:
 
     def __init__(self, reactions):
         """Open and load bot_answers.json, and launch functions."""
-        with open("grandPyApp/static/ressources/bot_answers.json") as data:
+        with open(
+            "grandPyApp/static/ressources/bot_answers.json",
+                "r", encoding="utf-8"
+        ) as data:
             self.bot_answers = json.load(data)
         self.reactions = reactions
         self.bonus_message = []

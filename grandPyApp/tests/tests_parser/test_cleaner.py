@@ -8,7 +8,8 @@ class TestCleaner:
 
     def test_Cleaner(self):
         """Cleaner.py main test."""
-        question_send = "Salut Ô GrandPy, seigneur des adresses ! Ca a été ta soirée ?"
+        question_send = "Salut Ô GrandPy, seigneur des adresses ! \
+            Ca a été ta soirée ?"
         assert Cleaner(question_send).question_cleaned == [
             "salut",
             "o",
@@ -23,10 +24,10 @@ class TestCleaner:
             "soiree",
         ]
 
-    def test_uncapitalized_string(self):
+    def test_uncapitalized(self):
         """Cleaner.py function _uncapitalized_string test."""
         question_send = "TesT tHIs"
-        assert Cleaner(question_send)._uncapitalized_string == "test this"
+        assert Cleaner(question_send)._uncapitalized == "test this"
 
     def test_no_punctuation(self):
         """Cleaner.py function _no_punctuation test."""
@@ -47,4 +48,5 @@ class TestCleaner:
     def test_split(self):
         """Cleaner.py function _split test."""
         question_send = "Salut Ô GrandPy !"
-        assert Cleaner(question_send).question_cleaned == ["salut", "o", "grandpy"]
+        assert Cleaner(question_send).question_cleaned == ["salut",
+                                                           "o", "grandpy"]

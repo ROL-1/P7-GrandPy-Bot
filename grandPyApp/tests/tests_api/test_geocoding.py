@@ -1,7 +1,5 @@
 """Tests file for grandPyApp/geocoding.py."""
 
-import json
-
 from grandPyApp.api.geocoding import Geocoding
 
 
@@ -25,7 +23,8 @@ class TestGeocoding:
                     "place_name": "Bordeaux, Gironde, France",
                     "bbox": [-0.638626, 44.81077, -0.533675, 44.915545],
                     "center": [-0.57944, 44.83778],
-                    "geometry": {"type": "Point", "coordinates": [-0.57944, 44.83778]},
+                    "geometry": {"type": "Point", "coordinates":
+                                 [-0.57944, 44.83778]},
                     "context": [
                         {
                             "id": "region.12909948074787080",
@@ -53,20 +52,9 @@ class TestGeocoding:
             """Mock function for get_geocoding."""
             return results
 
-        # class MockResponse:
-
-        #     def read(self):
-        #         results_string = json.dumps(results)
-        #         results_bytes = results_string.encode()
-        #         return results_bytes
-
-        # def mock_get_geocoding(url): #url
-        #     """Mock function for get_geocoding."""
-        #     return MockResponse()
-
         monkeypatch.setattr(Geocoding, "get_geocoding", mock_get_geocoding)
 
         g = Geocoding(parsed_string)
         assert g.response == results
-        # assert g.coord == results["features"][0]["center"]
-        # assert g.adress == results["features"][0]["place_name"]
+        assert g.coord == results["features"][0]["center"]
+        assert g.adress == results["features"][0]["place_name"]

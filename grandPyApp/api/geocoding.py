@@ -28,14 +28,21 @@ class Geocoding:
     def get_geocoding(self):
         """Create and pass request for Geocoding API (MapBox)."""
         response = requests.get(url=self.URL, params=self.PARAMS)
-        return response
+        if response.status_code == 200:
+            self.status_code = 200
+        else:
+            if response.status_code == 401:
+                self.status_code = 401
+            else:
+                self.status_code = response.status_code
+        return response.json()
 
     @property
     def coord(self):
         """Return coordinates."""
-        return self.response.json()["features"][0]["center"]
+        return self.response["features"][0]["center"]
 
     @property
     def adress(self):
         """Return adress."""
-        return self.response.json()["features"][0]["place_name"]
+        return self.response["features"][0]["place_name"]
