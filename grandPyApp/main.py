@@ -79,7 +79,7 @@ class Main:
         #  Call geocoding.py to make a request to Geocoding (Mapbox) API
         g = Geocoding(self.parsed_string)
         # Check if there is a response
-        if g.status_code == 200:
+        if g.err == 200:
             try:
                 # Read the response, looking for coordinates
                 g_coord = g.coord
@@ -104,7 +104,7 @@ class Main:
             except (KeyError, IndexError):
                 self.geo_failed(self.bot_answers["UNKNOW_ADRESS"])
         else:
-            if g.status_code == 401:
+            if g.err == 401:
                 self.geo_failed(self.bot_answers["FAIL_GEO_AUTHORIZATION"])
             else:
                 self.geo_failed(self.bot_answers["FAIL_GEO"]
@@ -119,14 +119,12 @@ class Main:
         """
         w = WikiApi(self.geo_coord_results)
         try:
-            coordsearch = w.coordsearch
-            if coordsearch.status_code == 200:
-                w.pageid(coordsearch)
+            w.pageid
+            if w.coord_err is False:
                 try:
-                    pagewiki = w.pagewiki
-                    if pagewiki.status_code == 200:
-                        w.extract(pagewiki)
-                        wiki_results = w.infos
+                    results = w.extract
+                    if w.pagewiki_err is False:
+                        wiki_results = results
                         # Verify if extract field is empty
                         if wiki_results == "":
                             self.wiki_failed(self.bot_answers["EMPTY_WIKI"])

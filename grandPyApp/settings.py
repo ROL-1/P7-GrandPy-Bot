@@ -13,4 +13,3 @@ if os.environ.get("ENV") == "PRODUCTION":
     DEBUG = False
 else:
     DEBUG = True
-

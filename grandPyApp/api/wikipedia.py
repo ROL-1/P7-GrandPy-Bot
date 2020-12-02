@@ -18,13 +18,7 @@ class WikiApi:
         self.URL = wikipedia["URL"]
         self.geo_coord_results = geo_coord_results
 
-    def get_wikipedia(self, params):
-        """Create a request."""
-        response = requests.get(url=self.URL, params=params)
-        return response
-
-    @property
-    def coordsearch(self):
+    def _coordsearch(self):
         """Create request for Wiki Media Api to search pageid."""
         long = self.geo_coord_results[0]
         lat = self.geo_coord_results[1]
@@ -36,15 +30,21 @@ class WikiApi:
             "gslimit": 1,
             "format": "json",
         }
-        response = self.get_wikipedia(params)
-        return response
-
-    def pageid(self, coordsearch):
-        """"""
-        self.page = coordsearch.json()["query"]["geosearch"][0]["pageid"]
+        print("response called !!!!!!!!!!!!!!!!!!!")
+        response = requests.get(url=self.URL, params=params)
+        if response.status_code == 200:
+            self.coord_err = False
+        else:
+            self.coord_err = True
+        return response.json()
 
     @property
-    def pagewiki(self):
+    def pageid(self):
+        """Return wikipedia page id for second search."""
+        page = self._coordsearch()
+        self.page = page["query"]["geosearch"][0]["pageid"]
+
+    def _pagewiki(self):
         """Create request for Wiki Media Api to open pageid."""
         params = {
             "pageids": self.page,
@@ -56,10 +56,15 @@ class WikiApi:
             "exsentences": wikipedia["SENTENCES_LIMIT"],
         }
 
-        response = self.get_wikipedia(params)
-        return response
+        response = requests.get(url=self.URL, params=params)
+        if response.status_code == 200:
+            self.pagewiki_err = False
+        else:
+            self.pagewiki_err = True
+        return response.json()
 
-    def extract(self, pagewiki):
-        """"""
-        self.infos = \
-            pagewiki.json()["query"]["pages"][str(self.page)]["extract"]
+    @property
+    def extract(self):
+        """Return informations for grandpy story."""
+        infos = self._pagewiki()
+        return infos["query"]["pages"][str(self.page)]["extract"]

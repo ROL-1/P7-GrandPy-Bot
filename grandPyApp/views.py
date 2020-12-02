@@ -29,8 +29,6 @@ def getAnswer():
 
     response = Main(question_send)
 
-    print(response.bonus_message)
-
     out = jsonify(
         {
             "answer": question_send,

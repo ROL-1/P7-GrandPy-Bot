@@ -6,8 +6,8 @@ from grandPyApp.api.wikipedia import WikiApi
 class TestWikiApi:
     """Test for class : WikiApi."""
 
-    def test_WikiApi(self, monkeypatch):
-        """wikipedia.py test."""
+    def test_WikiApi_OK(self, monkeypatch):
+        """wikipedia.py test with result."""
         geo_coord_results = [-0.579541, 44.837912]
         results_coordsearch = {
             "batchcomplete": "",
@@ -33,7 +33,14 @@ class TestWikiApi:
                         "pageid": 3973632,
                         "ns": 0,
                         "title": "Bordeaux",
-                        "extract": "Bordeaux (/bɔʁ.do/) est une commune du Sud-Ouest de la France. Capitale de la Gaule aquitaine sous l'Empire romain pendant près de 200 ans ; puis du Duché d'Aquitaine, de la province royale de Guyenne et du siècle des lumières, elle est aujourd'hui le chef-lieu et la préfecture de la région Nouvelle-Aquitaine, du département de la Gironde et le siège de Bordeaux Métropole.",
+                        "extract": "Bordeaux (/bɔʁ.do/) est une commune du "
+                        "Sud-Ouest de la France. Capitale de la Gaule "
+                        "aquitaine sous l'Empire romain pendant près de 200"
+                        " ans ; puis du Duché d'Aquitaine, de la province "
+                        "royale de Guyenne et du siècle des lumières, elle "
+                        "est aujourd'hui le chef-lieu et la préfecture de la"
+                        " région Nouvelle-Aquitaine, du département de la "
+                        "Gironde et le siège de Bordeaux Métropole.",
                     }
                 }
             },
@@ -42,14 +49,38 @@ class TestWikiApi:
         def mock_coordsearch(self):
             return results_coordsearch
 
-        monkeypatch.setattr(WikiApi, "pageid", mock_coordsearch)
+        monkeypatch.setattr(WikiApi, "_coordsearch", mock_coordsearch)
 
         def mock_pagewiki(self):
             return results_pagewiki
 
-        monkeypatch.setattr(WikiApi, "extract", mock_pagewiki)
+        monkeypatch.setattr(WikiApi, "_pagewiki", mock_pagewiki)
 
         w = WikiApi(geo_coord_results)
-        assert w.coordsearch.json() == results_coordsearch
-        WikiApi.page = 3973632
-        assert w.pagewiki.json() == results_pagewiki
+        w.pageid
+        assert w.page == results_coordsearch["query"]["geosearch"][0]["pageid"]
+        page = 3973632
+        assert w.extract == \
+            results_pagewiki["query"]["pages"][str(page)]["extract"]
+
+    # def test_WikiApi_NOK(self, monkeypatch):
+    #     """wikipedia.py test with result."""
+    #     geo_coord_results = [-0.579541, 44.837912]
+
+    #     def mock_coordsearch_NOK(self):
+    #         return {}
+
+    #     monkeypatch.setattr(WikiApi, "_coordsearch", mock_coordsearch_NOK)
+
+
+    #     def mock_pagewiki_NOK(self):
+    #         return {}
+
+    #     monkeypatch.setattr(WikiApi, "_pagewiki", mock_pagewiki_NOK)
+
+    #     w = WikiApi(geo_coord_results)
+    #     mock_coordsearch_NOK.status_code = 400
+    #     w.pageid
+    #     assert w.coord_err is True
+    #     # page = 3973632
+    #     # assert w.extract == {}

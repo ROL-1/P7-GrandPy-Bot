@@ -39,10 +39,10 @@ class TestCleaner:
 
     def test_no_accentuation(self):
         """Cleaner.py function _no_accentuation test."""
-        question_send = "çÇáéíóúýÁÉÍÓÚÝàèìòùÀÈÌÒÙãõñäëïöüÿÄËÏÖÜÃÕÑâêîôûÂÊÎÔÛ,È,É,Ê,Ë,Û,Ù,Ï,Î,À,Â,Ô,è,é,ê,ë,û,ù,ï,î,à,â,ô,Ç,ç,Ã,ã,Õ,õ"
+        question_send = "çÇáéíóúýÁÉÍÓÚÝàèìòùÀÈÌÒÙãõñäëïöüÿÄËÏÖÜÃÕÑâêîôûÂÊÎÔÛ"
         assert (
             Cleaner(question_send)._no_accentuation
-            == "ccaeiouyaeiouyaeiouaeiouaonaeiouyaeiouaonaeiouaeiou e e e e u u i i a a o e e e e u u i i a a o c c a a o o"
+            == "ccaeiouyaeiouyaeiouaeiouaonaeiouyaeiouaonaeiouaeiou"
         )
 
     def test_split(self):

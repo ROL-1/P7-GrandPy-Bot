@@ -29,12 +29,12 @@ class Geocoding:
         """Create and pass request for Geocoding API (MapBox)."""
         response = requests.get(url=self.URL, params=self.PARAMS)
         if response.status_code == 200:
-            self.status_code = 200
+            self.err = 200
         else:
             if response.status_code == 401:
-                self.status_code = 401
+                self.err = 401
             else:
-                self.status_code = response.status_code
+                self.err = response.status_code
         return response.json()
 
     @property

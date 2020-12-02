@@ -6,8 +6,8 @@ from grandPyApp.api.geocoding import Geocoding
 class TestGeocoding:
     """Test for class : Geocoding."""
 
-    def test_geocoding(self, monkeypatch):
-        """geocoding.py test."""
+    def test_geocoding_OK(self, monkeypatch):
+        """geocoding.py test with result."""
         parsed_string = "Bordeaux"
         results = {
             "type": "FeatureCollection",
@@ -58,3 +58,16 @@ class TestGeocoding:
         assert g.response == results
         assert g.coord == results["features"][0]["center"]
         assert g.adress == results["features"][0]["place_name"]
+
+    def test_geocoding_NOK(self, monkeypatch):
+        """geocoding.py test without result."""
+        parsed_string = "Bordeaux"
+
+        def mock_get_geocoding_NOK(self):
+            """Mock function for get_geocoding."""
+            return {}
+
+        monkeypatch.setattr(Geocoding, "get_geocoding", mock_get_geocoding_NOK)
+
+        g = Geocoding(parsed_string)
+        assert g.response == {}
