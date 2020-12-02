@@ -23,10 +23,14 @@ class Main:
 
     def main(self, question_send):
         """Launch functions for class : Main."""
-        # Clean and parse the question
-        self.parse(question_send)
+        # Clean and parse the question$
+        p = Parser(question_send)
+        self.parsed_string = p.parsed_string
         # Analyse the words selected
-        self.interpreter()
+        i = Interpreter(self.parsed_string)
+        self.parsed_string = i.better_words
+        r = Reactions(i.reactions)
+        self.bonus_message = " ".join(r.bonus_message)
         # Launch searches if parsed_string is not empty
         if self.parsed_string != "":
             self.geo()
@@ -47,25 +51,11 @@ class Main:
         self.wiki_fail = True
 
     def wiki_failed(self, wiki_fail_message):
+        """Rection if wikipedia module fail."""
         # MediaWiki is not called
         self.wiki_results = wiki_fail_message
-        self.wiki_fail = True
+        self.wiki_fail = True        
 
-    def parse(self, question_send):
-        """Call parse.py.
-
-        In : question_send (string).
-        Act : Call parse.py, check result.
-        Out : parsed_string (string) : selected words for geocoding.
-        """
-        self.parsed_string = Parser(question_send).parsed_string
-
-    def interpreter(self):
-        """"""
-        i = Interpreter(self.parsed_string)
-        self.parsed_string = i.better_words
-        r = Reactions(i.reactions)
-        self.bonus_message = " ".join(r.bonus_message)
 
     def geo(self):
         """Call geocoding.py to make a request to MediaWiki (Wikipedia) API.

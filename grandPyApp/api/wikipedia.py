@@ -30,7 +30,6 @@ class WikiApi:
             "gslimit": 1,
             "format": "json",
         }
-        print("response called !!!!!!!!!!!!!!!!!!!")
         response = requests.get(url=self.URL, params=params)
         if response.status_code == 200:
             self.coord_err = False

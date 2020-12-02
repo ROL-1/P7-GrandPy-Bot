@@ -62,25 +62,3 @@ class TestWikiApi:
         page = 3973632
         assert w.extract == \
             results_pagewiki["query"]["pages"][str(page)]["extract"]
-
-    # def test_WikiApi_NOK(self, monkeypatch):
-    #     """wikipedia.py test with result."""
-    #     geo_coord_results = [-0.579541, 44.837912]
-
-    #     def mock_coordsearch_NOK(self):
-    #         return {}
-
-    #     monkeypatch.setattr(WikiApi, "_coordsearch", mock_coordsearch_NOK)
-
-
-    #     def mock_pagewiki_NOK(self):
-    #         return {}
-
-    #     monkeypatch.setattr(WikiApi, "_pagewiki", mock_pagewiki_NOK)
-
-    #     w = WikiApi(geo_coord_results)
-    #     mock_coordsearch_NOK.status_code = 400
-    #     w.pageid
-    #     assert w.coord_err is True
-    #     # page = 3973632
-    #     # assert w.extract == {}
