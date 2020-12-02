@@ -71,6 +71,7 @@ http://127.0.0.1:5000/
 Il est nécessaire d'avoir un compte heroku et d'y définir ce projet comme nouveau projet heroku.
 Puis passer la commande :
 - `git push heroku`
+Il faudra également ajouter la variable d'environnement "MAPBOX_API_KEY" avec comme valeur votre clef pour l'api Mapbox.
 
 -----------------
 ## Lien vers le Trello :
